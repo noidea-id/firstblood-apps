@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_timeline"
+        android:icon="@drawable/ic_today"
+        android:title="TIMELINE" />
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/blood"
+        android:title="HOME"/>
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/ic_account_circle"
+        android:title="PROFILE"/>
+
+
+</menu>
