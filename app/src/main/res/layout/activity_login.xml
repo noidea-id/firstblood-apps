@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    tools:context="id.noidea.firstblood.LoginActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="16dp"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:paddingTop="16dp">
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="60dp"
+                app:srcCompat="@drawable/logo" />
+            <EditText
+                android:id="@+id/inputEmail"
+                android:layout_below="@+id/logo"
+                android:layout_marginTop="25dp"
+                android:layout_centerHorizontal="true"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="EMAIL"
+                android:textColor="#000"
+                android:fontFamily="sans-serif"
+                android:textSize="13sp"
+                android:background="@drawable/capsule_text"
+                android:padding="10dp"
+                android:textAlignment="center"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/inputPassword"
+                android:layout_below="@+id/inputEmail"
+                android:layout_marginTop="10dp"
+                android:hint="PASSWORD"
+                android:inputType="textPassword"
+                android:textSize="13sp"
+                android:fontFamily="sans-serif"
+                android:background="@drawable/capsule_text"
+                android:textAlignment="center"
+                android:padding="10dp"
+                android:textColor="#000"/>
+
+            <Button
+                android:id="@+id/Login"
+                android:layout_below="@+id/inputPassword"
+                android:layout_marginTop="25dp"
+                android:layout_centerHorizontal="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MASUK"
+                android:textSize="13sp"
+                android:textColor="@color/colorAccent"
+                android:background="@drawable/capsule_button" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</LinearLayout>
