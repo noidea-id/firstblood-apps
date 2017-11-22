@@ -19,7 +19,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Profile"
+                android:text="Profil"
                 android:layout_gravity="center"
                 android:textColor="@color/colorAccent"
                 style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
@@ -82,7 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:text="EMAIL"
+                android:text="E-MAIL"
                 android:textSize="12sp"
                 android:textAllCaps="true"/>
             <TextView
@@ -93,7 +93,7 @@
                 android:padding="15dp"
                 android:textSize="15sp"
                 android:textAlignment="center"
-                android:text="fawazz29@gmail.com"
+                android:text="naufal.fazanadi@gmail.com"
                 android:background="@drawable/capsule_profile"/>
             <TextView
                 android:id="@+id/phone_title"
@@ -124,7 +124,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textSize="12sp"
-                android:text="logout"
+                android:text="KELUAR"
                 android:textAllCaps="true"/>
 
         </LinearLayout>

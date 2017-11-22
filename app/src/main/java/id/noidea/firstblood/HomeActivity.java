@@ -8,15 +8,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import id.noidea.firstblood.Fragment.HomeFragment;
 import id.noidea.firstblood.Fragment.ProfileFragment;
 import id.noidea.firstblood.Fragment.TimelineFragment;
+import id.noidea.firstblood.Item.Timeline;
 
 public class HomeActivity extends AppCompatActivity {
-
+    Button donate_button;
     private static final String TAG = HomeActivity.class.getSimpleName();
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -56,22 +59,24 @@ public class HomeActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, homeFragment).addToBackStack(null).commit();
 
         BottomNavigationViewEx navigation = (BottomNavigationViewEx) findViewById(R.id.navigation);
-
+        donate_button = (Button) findViewById(R.id.donate_button);
         navigation.enableAnimation(false);
         navigation.enableShiftingMode(false);
-        navigation.setTextVisibility(false);
-        navigation.setIconsMarginTop(32);
-        navigation.setIconSize(26,26);
-        navigation.setItemHeight(144);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         Bundle extras = getIntent().getExtras();
-        int position=0;
+        int position=1;
         if(extras != null) {
             position = extras.getInt("viewpager_position");
         }
         if(position==0){
-            HomeFragment historyFragment = new HomeFragment();
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, historyFragment)
+            TimelineFragment timelineFragment = new TimelineFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, timelineFragment)
+                    .addToBackStack(null)
+                    .commit();
+            navigation.getMenu().getItem(0).setChecked(true);
+        }else if(position==1){
+            HomeFragment homeFragment1 = new HomeFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, homeFragment1)
                     .addToBackStack(null)
                     .commit();
             navigation.getMenu().getItem(1).setChecked(true);
