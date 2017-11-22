@@ -11,7 +11,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
+import java.text.DateFormat;
+import java.util.ArrayList;
+
+import id.noidea.firstblood.Adapter.TimelineAdapter;
+import id.noidea.firstblood.Item.Timeline;
 import id.noidea.firstblood.R;
 
 /**
@@ -19,6 +26,8 @@ import id.noidea.firstblood.R;
  */
 public class TimelineFragment extends Fragment {
 
+    private ListView listView;
+    ArrayList<Timeline> timelineArrayList;
 
     public TimelineFragment() {
         // Required empty public constructor
@@ -38,6 +47,21 @@ public class TimelineFragment extends Fragment {
         Toolbar toolbar =  view.findViewById(R.id.toolbar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(null);
+        listView = (ListView) view.findViewById(R.id.timeline);
+        timelineArrayList = new ArrayList<>();
+        timelineArrayList.add(new Timeline("user.jpg","URGENT : dibutuhkan golongan darah B+ sebanyak 4 kantong untuk ibu dari teman saya di RSUD Ahmad Yani Metro Lampung Tengah. untuk teman yang berada di lampung dan mau membantu bisa hubungi WA/sms ke +62 896-4648-5244. mohon bantu share jika berkenan. terimakasih.","B-","+","Menunggu","link.com", "11/22/2017"));
+        timelineArrayList.add(new Timeline("user.jpg","URGENT : dibutuhkan golongan darah B+ sebanyak 4 kantong untuk ibu dari teman saya di RSUD Ahmad Yani Metro Lampung Tengah. untuk teman yang berada di lampung dan mau membantu bisa hubungi WA/sms ke +62 896-4648-5244. mohon bantu share jika berkenan. terimakasih.","A+","+","Menunggu","link.com", "11/22/2017"));
+        timelineArrayList.add(new Timeline("user.jpg","URGENT : dibutuhkan golongan darah B+ sebanyak 4 kantong untuk ibu dari teman saya di RSUD Ahmad Yani Metro Lampung Tengah. untuk teman yang berada di lampung dan mau membantu bisa hubungi WA/sms ke +62 896-4648-5244. mohon bantu share jika berkenan. terimakasih.","AB+","+","Menunggu","link.com", "11/22/2017"));
+        TimelineAdapter adapter = new TimelineAdapter(getContext(),timelineArrayList);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+        });
+
+
         return view;
     }
 

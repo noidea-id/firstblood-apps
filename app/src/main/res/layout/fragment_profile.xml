@@ -1,8 +1,9 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context="id.noidea.firstblood.Fragment.ProfileFragment">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -26,5 +27,107 @@
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorBody"
+            android:paddingBottom="16dp"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:paddingTop="16dp"
+            android:orientation="vertical">
 
-</RelativeLayout>
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile_image"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="15dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/user"
+                app:civ_border_color="#ecf0f1"
+                app:civ_border_width="0.5dp" />
+
+            <TextView
+                android:id="@+id/name_title"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:text="NAMA"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12sp"
+                android:textAllCaps="true"/>
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:padding="15dp"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:text="Naufal Fazanadi"
+                android:background="@drawable/capsule_profile"/>
+            <TextView
+                android:id="@+id/email_title"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:text="EMAIL"
+                android:textSize="12sp"
+                android:textAllCaps="true"/>
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:padding="15dp"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:text="fawazz29@gmail.com"
+                android:background="@drawable/capsule_profile"/>
+            <TextView
+                android:id="@+id/phone_title"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:text="NO HANDPHONE"
+                android:textSize="12sp"
+                android:textAllCaps="true"/>
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:padding="15dp"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:text="087829473940"
+                android:background="@drawable/capsule_profile"/>
+
+            <TextView
+                android:id="@+id/btnLogout"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginTop="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="12sp"
+                android:text="logout"
+                android:textAllCaps="true"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>
