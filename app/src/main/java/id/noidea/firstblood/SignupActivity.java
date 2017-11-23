@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Base64;
+
 public class SignupActivity extends AppCompatActivity {
 
     private String[] arraySpinnerBlood;
