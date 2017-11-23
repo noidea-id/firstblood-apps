@@ -5,9 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.io.BufferedInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Base64;
 
@@ -15,11 +21,13 @@ public class SignupActivity extends AppCompatActivity {
 
     private String[] arraySpinnerBlood;
     private String[] arraySpinnerRhesus;
+    EditText phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+        phone = (EditText) findViewById(R.id.phoneNumber);
 
         this.arraySpinnerBlood = new String[] {
                 "A", "B", "O", "AB"
