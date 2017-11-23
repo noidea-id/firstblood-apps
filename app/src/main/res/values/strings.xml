@@ -1,22 +1,22 @@
 <resources>
-    <string name="app_name">First Blood</string>
+    <string name="app_name">FirstBlood</string>
 
     <string name="title_activity_welcome">Home Screen</string>
-    <string name="next">NEXT</string>
-    <string name="skip">SKIP</string>
-    <string name="start">GOT IT</string>
+    <string name="next">LANJUT</string>
+    <string name="skip">LEWATI</string>
+    <string name="start">MENGERTI</string>
 
-    <string name="slide_1_title">Hello Food!</string>
-    <string name="slide_1_desc">The easiest way to order food from your favourite restaurant!</string>
+    <string name="slide_1_title">71%</string>
+    <string name="slide_1_desc">Kebutuhan darah di Indonesia tidak terpenuhi</string>
 
-    <string name="slide_2_title">Movie Tickets</string>
-    <string name="slide_2_desc">Book movie tickets for your family and friends!</string>
+    <string name="slide_2_title">5,1 Juta per tahun</string>
+    <string name="slide_2_desc">Jumlah kebutuhan minimal darah di Indonesia</string>
 
-    <string name="slide_3_title">Great Discounts</string>
-    <string name="slide_3_desc">Best discounts on every single service we offer!</string>
+    <string name="slide_3_title">3 dari 10</string>
+    <string name="slide_3_desc">Ibu ibu yang melahirkan meninggal akibat pendarahan</string>
 
-    <string name="slide_4_title">World Travel</string>
-    <string name="slide_4_desc">Book tickets of any transportation and travel the world!</string>
+    <string name="slide_4_title">Gabung dengan kami!</string>
+    <string name="slide_4_desc">Saling membantu untuk kemanusiaan</string>
 
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
