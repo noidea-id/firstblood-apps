@@ -32,11 +32,18 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".HomeActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity android:name=".NotifActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".NotifActivity"
             android:label="Notifikasi"
-            android:parentActivityName="id.noidea.firstblood.HomeActivity">
+            android:parentActivityName=".HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="id.noidea.firstblood.HomeActivity" />
+        </activity>
+        <activity android:name=".FindActivity"
+            android:label="Cari Donor"
+            android:parentActivityName=".HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="id.noidea.firstblood.HomeActivity" />

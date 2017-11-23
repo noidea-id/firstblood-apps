@@ -49,8 +49,8 @@ public class TimelineFragment extends Fragment {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(null);
         listView = (ListView) view.findViewById(R.id.timeline);
         timelineArrayList = new ArrayList<>();
-        timelineArrayList.add(new Timeline("user.jpg","URGENT : dibutuhkan golongan darah B+ sebanyak 4 kantong untuk ibu dari teman saya di RSUD Ahmad Yani Metro Lampung Tengah. untuk teman yang berada di lampung dan mau membantu bisa hubungi WA/sms ke +62 896-4648-5244. mohon bantu share jika berkenan. terimakasih.","B-","+","Menunggu","link.com", "11/22/2017"));
-        timelineArrayList.add(new Timeline("user.jpg","URGENT : dibutuhkan golongan darah B+ sebanyak 4 kantong untuk ibu dari teman saya di RSUD Ahmad Yani Metro Lampung Tengah. untuk teman yang berada di lampung dan mau membantu bisa hubungi WA/sms ke +62 896-4648-5244. mohon bantu share jika berkenan. terimakasih.","A+","+","Menunggu","link.com", "11/22/2017"));
+        timelineArrayList.add(new Timeline("user.jpg","Dibutuhkan segera, golongan darah A+ saat ini juga untuk Sdr. Fathi Abdat, yang sakit kompilasi (jantung, paru-paru, ginjal, diabetes).","B-","+","Menunggu","link.com", "11/22/2017"));
+        timelineArrayList.add(new Timeline("user.jpg","malam saya ibu dari muhammad mutsaqoful fikri penderita anemia aplastik membutuhkan darah golongan darah B yg sedang di rawat di rsup fatmawati jakarta , mohon bantuannya untuk segenap handaitaulan","A+","+","Menunggu","link.com", "11/22/2017"));
         timelineArrayList.add(new Timeline("user.jpg","URGENT : dibutuhkan golongan darah B+ sebanyak 4 kantong untuk ibu dari teman saya di RSUD Ahmad Yani Metro Lampung Tengah. untuk teman yang berada di lampung dan mau membantu bisa hubungi WA/sms ke +62 896-4648-5244. mohon bantu share jika berkenan. terimakasih.","AB+","+","Menunggu","link.com", "11/22/2017"));
         TimelineAdapter adapter = new TimelineAdapter(getContext(),timelineArrayList);
         listView.setAdapter(adapter);

@@ -31,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fillViewport="true">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -50,7 +51,7 @@
                 android:layout_marginBottom="15dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:src="@drawable/user"
+                android:src="@drawable/naufal"
                 app:civ_border_color="#ecf0f1"
                 app:civ_border_width="0.5dp" />
 
@@ -116,16 +117,87 @@
                 android:text="087829473940"
                 android:background="@drawable/capsule_profile"/>
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/linLayout1"
+                android:weightSum="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="15dp"
+                android:layout_below="@+id/phone">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="0.45">
+                    <TextView
+                        android:id="@+id/goldar_text"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:text="GOLONGAN DARAH"
+                        android:textSize="12sp"
+                        android:textAllCaps="true"/>
+                    <TextView
+                        android:id="@+id/goldar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:padding="15dp"
+                        android:textSize="15sp"
+                        android:textAlignment="center"
+                        android:text="AB"
+                        android:background="@drawable/capsule_profile"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.1"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="0.45">
+                    <TextView
+                        android:id="@+id/rhesus_text"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:text="RHESUS"
+                        android:textSize="12sp"
+                        android:textAllCaps="true"/>
+                    <TextView
+                        android:id="@+id/rhesus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:padding="15dp"
+                        android:textSize="15sp"
+                        android:textAlignment="center"
+                        android:text="+"
+                        android:background="@drawable/capsule_profile"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
                 android:id="@+id/btnLogout"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorAccent"
                 android:layout_marginTop="30dp"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textSize="12sp"
-                android:text="KELUAR"
-                android:textAllCaps="true"/>
+                android:textSize="14sp"
+                android:text="logout"
+                android:textAllCaps="true"
+                android:background="@drawable/capsule_button"/>
 
         </LinearLayout>
 

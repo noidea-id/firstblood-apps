@@ -27,6 +27,7 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.util.HashMap;
 
+import id.noidea.firstblood.FindActivity;
 import id.noidea.firstblood.HomeActivity;
 import id.noidea.firstblood.IntroActivity;
 import id.noidea.firstblood.NotifActivity;
@@ -38,7 +39,7 @@ import id.noidea.firstblood.R;
 public class HomeFragment extends Fragment implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
     SliderLayout mDemoSlider;
-    Button donate_button;
+    Button donate_button,request_button;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -61,6 +62,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(null);
         mDemoSlider = (SliderLayout) view.findViewById(R.id.slider);
         donate_button = (Button) view.findViewById(R.id.donate_button);
+        request_button = (Button) view.findViewById(R.id.request_button);
 
         HashMap<String,Integer> file_maps = new HashMap<String, Integer>();
         file_maps.put("1",R.drawable.fact2);
@@ -86,6 +88,13 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(),HomeActivity.class);
                 intent.putExtra("viewpager_position", 0);
+                startActivity(intent);
+            }
+        });
+        request_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(),FindActivity.class);
                 startActivity(intent);
             }
         });
