@@ -195,6 +195,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textSize="14sp"
+                android:onClick="logout"
                 android:text="logout"
                 android:textAllCaps="true"
                 android:background="@drawable/capsule_button"/>
