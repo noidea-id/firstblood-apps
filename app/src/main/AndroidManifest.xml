@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SplashActivity"
+            android:name=".Activity.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,34 +19,34 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".IntroActivity"
+            android:name=".Activity.IntroActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Activity.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SignupActivity"
+            android:name=".Activity.SignupActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".VerifyActivity"
+            android:name=".Activity.VerifyActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".Activity.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".NotifActivity"
+            android:name=".Activity.NotifActivity"
             android:label="Notifikasi"
-            android:parentActivityName=".HomeActivity">
+            android:parentActivityName=".Activity.HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="id.noidea.firstblood.HomeActivity" />
+                android:value="id.noidea.firstblood.Activity.HomeActivity" />
         </activity>
-        <activity android:name=".FindActivity"
+        <activity android:name=".Activity.FindActivity"
             android:label="Cari Donor"
-            android:parentActivityName=".HomeActivity">
+            android:parentActivityName=".Activity.HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="id.noidea.firstblood.HomeActivity" />
+                android:value="id.noidea.firstblood.Activity.HomeActivity" />
         </activity>
     </application>
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="id.noidea.firstblood.VerifyActivity">
+    tools:context="id.noidea.firstblood.Activity.VerifyActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -54,7 +54,8 @@
                 android:layout_marginTop="37dp"
                 android:text="Verifikasi Akun Anda"
                 android:textAlignment="center"
-                android:textSize="20dp"/>
+                android:textSize="20dp"
+                tools:ignore="NotSibling" />
 
             <TextView
                 android:id="@+id/textView5"

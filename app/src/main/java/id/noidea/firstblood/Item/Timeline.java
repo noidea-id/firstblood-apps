@@ -10,12 +10,7 @@ import java.text.DateFormat;
  */
 
 public class Timeline implements Parcelable{
-    String picture;
-    String desc;
-    String blood;
-    String rhesus;
-    String status;
-    String date;
+    private String picture, desc, blood, rhesus, status, date;
 
     public Timeline(String picture, String desc, String blood, String rhesus, String status, String link, String date) {
         this.picture = picture;

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBody"
-    tools:context="id.noidea.firstblood.FindActivity"
+    tools:context="id.noidea.firstblood.Activity.FindActivity"
     android:fillViewport="true">
     <ScrollView
         android:layout_width="match_parent"

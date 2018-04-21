@@ -15,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daimajia.slider.library.Indicators.PagerIndicator;
@@ -27,10 +26,9 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.util.HashMap;
 
-import id.noidea.firstblood.FindActivity;
-import id.noidea.firstblood.HomeActivity;
-import id.noidea.firstblood.IntroActivity;
-import id.noidea.firstblood.NotifActivity;
+import id.noidea.firstblood.Activity.FindActivity;
+import id.noidea.firstblood.Activity.HomeActivity;
+import id.noidea.firstblood.Activity.NotifActivity;
 import id.noidea.firstblood.R;
 
 /**

@@ -25,8 +25,8 @@ import id.noidea.firstblood.R;
 
 public class TimelineAdapter extends BaseAdapter {
 
-    Context context;
-    ArrayList<Timeline> timelineArrayList;
+    private Context context;
+    private ArrayList<Timeline> timelineArrayList;
 
     public TimelineAdapter(Context context, ArrayList<Timeline> timelineArrayList) {
         this.context = context;
@@ -55,18 +55,18 @@ public class TimelineAdapter extends BaseAdapter {
         if(v == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inflater.inflate(R.layout.card_timeline, null);
-            holder.picture = (ImageView) v.findViewById(R.id.picture);
-            holder.desc = (TextView) v.findViewById(R.id.desc);
-            holder.blood = (TextView) v.findViewById(R.id.blood);
-            holder.status = (TextView) v.findViewById(R.id.status);
-            holder.date = (TextView) v.findViewById(R.id.date);
+            holder.picture = v.findViewById(R.id.picture);
+            holder.desc = v.findViewById(R.id.desc);
+            holder.blood = v.findViewById(R.id.blood);
+            holder.status = v.findViewById(R.id.status);
+            holder.date = v.findViewById(R.id.date);
 
             Timeline timeline = timelineArrayList.get(i);
 
-            holder.desc.setText(timeline.getDesc().toString());
-            holder.blood.setText(timeline.getBlood().toString());
-            holder.status.setText(timeline.getStatus().toString());
-            holder.date.setText(timeline.getDate().toString());
+            holder.desc.setText(timeline.getDesc());
+            holder.blood.setText(timeline.getBlood());
+            holder.status.setText(timeline.getStatus());
+            holder.date.setText(timeline.getDate());
             holder.picture.setImageDrawable(context.getResources().getDrawable(R.drawable.user));
         }
 

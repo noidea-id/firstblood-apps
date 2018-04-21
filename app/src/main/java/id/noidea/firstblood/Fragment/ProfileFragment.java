@@ -13,10 +13,8 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
-import id.noidea.firstblood.HomeActivity;
-import id.noidea.firstblood.LoginActivity;
+import id.noidea.firstblood.Activity.LoginActivity;
 import id.noidea.firstblood.R;
 
 /**
