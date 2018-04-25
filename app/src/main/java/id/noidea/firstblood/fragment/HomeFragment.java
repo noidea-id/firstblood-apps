@@ -1,4 +1,4 @@
-package id.noidea.firstblood.Fragment;
+package id.noidea.firstblood.fragment;
 
 
 import android.content.Intent;
@@ -26,9 +26,9 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.util.HashMap;
 
-import id.noidea.firstblood.Activity.FindActivity;
-import id.noidea.firstblood.Activity.HomeActivity;
-import id.noidea.firstblood.Activity.NotifActivity;
+import id.noidea.firstblood.activity.FindActivity;
+import id.noidea.firstblood.activity.HomeActivity;
+import id.noidea.firstblood.activity.NotifActivity;
 import id.noidea.firstblood.R;
 
 /**

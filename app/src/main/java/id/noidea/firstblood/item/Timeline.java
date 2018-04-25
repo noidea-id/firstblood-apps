@@ -1,9 +1,7 @@
-package id.noidea.firstblood.Item;
+package id.noidea.firstblood.item;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import java.text.DateFormat;
 
 /**
  * Created by ziterz on 11/22/2017.

@@ -1,4 +1,4 @@
-package id.noidea.firstblood.Activity;
+package id.noidea.firstblood.activity;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,9 +9,9 @@ import android.widget.Button;
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
-import id.noidea.firstblood.Fragment.HomeFragment;
-import id.noidea.firstblood.Fragment.ProfileFragment;
-import id.noidea.firstblood.Fragment.TimelineFragment;
+import id.noidea.firstblood.fragment.HomeFragment;
+import id.noidea.firstblood.fragment.ProfileFragment;
+import id.noidea.firstblood.fragment.TimelineFragment;
 import id.noidea.firstblood.R;
 
 public class HomeActivity extends AppCompatActivity {

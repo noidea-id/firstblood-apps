@@ -1,4 +1,4 @@
-package id.noidea.firstblood.Fragment;
+package id.noidea.firstblood.fragment;
 
 
 import android.content.Intent;
@@ -14,7 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import id.noidea.firstblood.Activity.LoginActivity;
+import id.noidea.firstblood.activity.LoginActivity;
 import id.noidea.firstblood.R;
 
 /**

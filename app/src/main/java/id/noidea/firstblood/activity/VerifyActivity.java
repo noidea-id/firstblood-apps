@@ -1,4 +1,4 @@
-package id.noidea.firstblood.Activity;
+package id.noidea.firstblood.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

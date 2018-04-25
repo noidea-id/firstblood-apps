@@ -1,4 +1,4 @@
-package id.noidea.firstblood.Fragment;
+package id.noidea.firstblood.fragment;
 
 
 import android.os.Bundle;
@@ -14,11 +14,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
 
-import id.noidea.firstblood.Adapter.TimelineAdapter;
-import id.noidea.firstblood.Item.Timeline;
+import id.noidea.firstblood.adapter.TimelineAdapter;
+import id.noidea.firstblood.item.Timeline;
 import id.noidea.firstblood.R;
 
 /**

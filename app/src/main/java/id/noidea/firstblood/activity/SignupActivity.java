@@ -1,26 +1,27 @@
-package id.noidea.firstblood.Activity;
+package id.noidea.firstblood.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import id.noidea.firstblood.R;
 
-public class FindActivity extends AppCompatActivity {
+public class SignupActivity extends AppCompatActivity {
 
     private String[] arraySpinnerBlood;
     private String[] arraySpinnerRhesus;
-    Button find;
+    EditText phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_find);
-        find = (Button) findViewById(R.id.find);
+        setContentView(R.layout.activity_signup);
+        phone = (EditText) findViewById(R.id.phoneNumber);
+
         this.arraySpinnerBlood = new String[] {
                 "A", "B", "O", "AB"
         };
@@ -36,13 +37,10 @@ public class FindActivity extends AppCompatActivity {
         ArrayAdapter<String> adapterR = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, arraySpinnerRhesus);
         sR.setAdapter(adapterR);
-        find.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(),HomeActivity.class);
-                intent.putExtra("viewpager_position", 0);
-                startActivity(intent);
-            }
-        });
+    }
+
+    public void daftar(View v){
+        Intent i = new Intent(this, VerifyActivity.class);
+        startActivity(i);
     }
 }
