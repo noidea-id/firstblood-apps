@@ -23,12 +23,18 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("users/register/")
-    Call<ApiData<Integer>> postAccount(@Field("username") String username, @Field("email") String email, @Field("pass") String password);
+    Call<ApiData<Integer>> postAccount(@Field("username") String username, @Field("email") String email,
+                                       @Field("password") String password, @Field("nama") String nama,
+                                       @Field("goldar") String goldar, @Field("rhesus") String rhesus,
+                                       @Field("no_hp") String no_hp, @Field("foto_profil") String foto_profil);
 
     @FormUrlEncoded
     @PUT("users/update/")
     Call<ApiData<Integer>> putAccount(@Query("key") String key,
-                                      @Field("username") String username, @Field("email") String email,@Field("pass") String password);
+                                      @Field("username") String username, @Field("email") String email,
+                                      @Field("password") String password, @Field("nama")String nama,
+                                      @Field("goldar") String goldar, @Field("rhesus") String rhesus,
+                                      @Field("no_hp") String no_hp, @Field("foto_profil") String foto_profil);
     //example code
 //    @GET("kuliah/")
 //    Call<ApiData<Kuliah>> getAllMatkul(@Query("key") String key);

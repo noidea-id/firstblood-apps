@@ -8,6 +8,15 @@
     <string name="not_reg">Belum mendaftar?  </string>
     <string name="reg_here">Daftar disini</string>
 
+    <!--Register Activity-->
+    <string name="reg_tag">Lakukan registrasi terlebih dahulu</string>
+    <string name="name_h">Nama</string>
+    <string name="username_h">Username</string>
+    <string name="mail_h">E-Mail</string>
+    <string name="pass_conf_h">Ulangi Kata Sandi</string>
+    <string name="hp_h">No Handphone</string>
+    <string name="reg_btn">Daftar Akun</string>
+
     <string name="title_activity_welcome">Home Screen</string>
     <string name="next">LANJUT</string>
     <string name="skip">LEWATI</string>

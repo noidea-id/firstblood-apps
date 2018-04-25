@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,10 +7,6 @@
     android:background="@color/colorPrimary"
     tools:context="id.noidea.firstblood.activity.SignupActivity">
 
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -24,15 +20,14 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/imageView2"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="30dp"
-                android:text="Lakukan registrati terlebih dahulu"
+                android:text="@string/reg_tag"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/inputNama"
+                android:id="@+id/et_nama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -41,24 +36,40 @@
                 android:layout_marginTop="33dp"
                 android:background="@drawable/capsule_text"
                 android:fontFamily="sans-serif"
-                android:hint="NAMA"
+                android:hint="@string/name_h"
                 android:inputType="text"
+                android:padding="10dp"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:textSize="16sp" />
+            <EditText
+                android:id="@+id/et_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/et_nama"
+                android:layout_marginTop="19dp"
+                android:background="@drawable/capsule_text"
+                android:fontFamily="sans-serif"
+                android:hint="@string/username_h"
+                android:inputType="textEmailAddress"
                 android:padding="10dp"
                 android:textAlignment="center"
                 android:textColor="#000"
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/et_user"
+                android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/inputNama"
+                android:layout_below="@+id/et_username"
                 android:layout_marginTop="19dp"
                 android:background="@drawable/capsule_text"
                 android:fontFamily="sans-serif"
-                android:hint="E-MAIL"
+                android:hint="@string/mail_h"
                 android:inputType="textEmailAddress"
                 android:padding="10dp"
                 android:textAlignment="center"
@@ -71,11 +82,11 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/et_user"
+                android:layout_below="@+id/et_email"
                 android:layout_marginTop="19dp"
                 android:background="@drawable/capsule_text"
                 android:fontFamily="sans-serif"
-                android:hint="KATA SANDI"
+                android:hint="@string/pass_h"
                 android:inputType="textPassword"
                 android:padding="10dp"
                 android:textAlignment="center"
@@ -83,7 +94,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/inputPasswordConfirm"
+                android:id="@+id/et_pass_conf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -92,7 +103,7 @@
                 android:layout_marginTop="19dp"
                 android:background="@drawable/capsule_text"
                 android:fontFamily="sans-serif"
-                android:hint="ULANGI KATA SANDI"
+                android:hint="@string/pass_conf_h"
                 android:inputType="textPassword"
                 android:padding="10dp"
                 android:textAlignment="center"
@@ -107,7 +118,7 @@
                 android:orientation="horizontal"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="19dp"
-                android:layout_below="@+id/inputPasswordConfirm">
+                android:layout_below="@+id/et_pass_conf">
 
                 <RelativeLayout
                     android:layout_width="0dp"
@@ -116,38 +127,41 @@
                     android:layout_marginTop="5dp"
                     android:padding="15dp"
                     android:background="@drawable/capsule_text">
+
                     <Spinner
-                        android:id="@+id/spinner"
+                        android:id="@+id/sp_goldar"
                         android:layout_width="match_parent"
-                        android:textSize="18sp"
-                        android:textAlignment="center"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true" />
+                        android:layout_centerHorizontal="true"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
                 </RelativeLayout>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
                     android:layout_height="wrap_content" />
+
                 <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.45"
                     android:layout_marginTop="5dp"
-                    android:padding="15dp"
-                    android:background="@drawable/capsule_text">
+                    android:layout_weight="0.45"
+                    android:background="@drawable/capsule_text"
+                    android:padding="15dp">
+
                     <Spinner
-                        android:id="@+id/spinner2"
+                        android:id="@+id/sp_rhesus"
                         android:layout_width="match_parent"
-                        android:textSize="18sp"
-                        android:textAlignment="center"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true" />
+                        android:layout_centerHorizontal="true"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
                 </RelativeLayout>
             </LinearLayout>
 
             <EditText
-                android:id="@+id/phoneNumber"
+                android:id="@+id/et_no_hp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -156,7 +170,7 @@
                 android:layout_marginTop="19dp"
                 android:background="@drawable/capsule_text"
                 android:fontFamily="sans-serif"
-                android:hint="NO HANDPHONE"
+                android:hint="@string/hp_h"
                 android:inputType="phone"
                 android:padding="10dp"
                 android:textAlignment="center"
@@ -164,18 +178,17 @@
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/daftar"
+                android:id="@+id/bt_daftar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/phoneNumber"
+                android:layout_below="@+id/et_no_hp"
                 android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/capsule_button"
-                android:text="DAFTAR AKUN"
                 android:onClick="daftar"
+                android:text="@string/reg_btn"
                 android:textColor="@color/colorAccent"
-                android:textSize="13sp"
-                android:layout_marginBottom="10dp"/>
+                android:textSize="13sp" />
         </RelativeLayout>
-    </ScrollView>
-</LinearLayout>
+</ScrollView>
