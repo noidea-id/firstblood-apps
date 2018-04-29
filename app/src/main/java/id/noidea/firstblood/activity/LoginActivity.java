@@ -18,6 +18,7 @@ import id.noidea.firstblood.R;
 import id.noidea.firstblood.api.ApiClient;
 import id.noidea.firstblood.api.ApiData;
 import id.noidea.firstblood.api.ApiInterface;
+import id.noidea.firstblood.db.DbUsers;
 import id.noidea.firstblood.model.Users;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,6 +34,7 @@ public class LoginActivity extends Activity {
 
     private SharedPreferences sp;
     private SharedPreferences.Editor ed;
+    private DbUsers dbU;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,18 +42,18 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
         et_user = findViewById(R.id.et_user);
         et_pass = findViewById(R.id.et_pass);
+        dbU = new DbUsers(this);
+        dbU.open();
+        sp = getSharedPreferences("id.noidea.firstblood.user", MODE_PRIVATE);
 
-        sp = getSharedPreferences("id.noidea.firstblood.activity.user", MODE_PRIVATE);
-
-        String email = sp.getString("username", "");
+        String username = sp.getString("username", "");
         String api_key = sp.getString("api_key", "");
         boolean logged = sp.getBoolean("logged", false);
-
-//        if (!api_key.equals("") && !email.equals("") && logged) {
-//            finish();
-//            //opening profile activity
-//            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-//        }
+        if (!api_key.equals("") && !username.equals("") && logged) {
+            finish();
+            //opening profile activity
+            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+        }
     }
 
     public void daftar(View v){
@@ -96,6 +98,8 @@ public class LoginActivity extends Activity {
                         ed.putString("api_key", account.getData().getApi_key());
                         ed.putBoolean("logged", true);
                         ed.apply();
+                        dbU.deleteAll();
+                        long check = dbU.insertUser(account.getData());
                         Toast.makeText(c, "Berhasil Masuk", Toast.LENGTH_LONG).show();
                         finish();
                         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
@@ -114,10 +118,11 @@ public class LoginActivity extends Activity {
                 Toast.makeText(c, "connection error", Toast.LENGTH_LONG).show();
             }
         });
+    }
 
-
-//        Intent i = new Intent(this, HomeActivity.class);
-//        startActivity(i);
-//        finish();
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dbU.close();
     }
 }

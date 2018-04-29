@@ -67,15 +67,15 @@
                 android:textAllCaps="true"/>
 
             <TextView
-                android:id="@+id/name"
+                android:id="@+id/tv_nama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:background="@drawable/capsule_profile"
                 android:padding="15dp"
-                android:textSize="15sp"
-                android:textAlignment="center"
                 android:text="Naufal Fazanadi"
-                android:background="@drawable/capsule_profile"/>
+                android:textAlignment="center"
+                android:textSize="15sp" />
             <TextView
                 android:id="@+id/email_title"
                 android:layout_marginTop="20dp"
@@ -86,16 +86,17 @@
                 android:text="E-MAIL"
                 android:textSize="12sp"
                 android:textAllCaps="true"/>
+
             <TextView
-                android:id="@+id/email"
+                android:id="@+id/tv_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:background="@drawable/capsule_profile"
                 android:padding="15dp"
-                android:textSize="15sp"
-                android:textAlignment="center"
                 android:text="naufal.fazanadi@gmail.com"
-                android:background="@drawable/capsule_profile"/>
+                android:textAlignment="center"
+                android:textSize="15sp" />
             <TextView
                 android:id="@+id/phone_title"
                 android:textColor="@color/colorPrimaryDark"
@@ -107,7 +108,7 @@
                 android:textSize="12sp"
                 android:textAllCaps="true"/>
             <TextView
-                android:id="@+id/phone"
+                android:id="@+id/tv_no_hp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -125,33 +126,35 @@
                 android:orientation="horizontal"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="15dp"
-                android:layout_below="@+id/phone">
+                android:layout_below="@+id/tv_no_hp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_weight="0.45">
+
                     <TextView
-                        android:id="@+id/goldar_text"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:layout_marginTop="20dp"
+                        android:id="@+id/textview"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
                         android:text="GOLONGAN DARAH"
-                        android:textSize="12sp"
-                        android:textAllCaps="true"/>
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="12sp" />
+
                     <TextView
-                        android:id="@+id/goldar"
+                        android:id="@+id/tv_goldar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
+                        android:background="@drawable/capsule_profile"
                         android:padding="15dp"
-                        android:textSize="15sp"
-                        android:textAlignment="center"
                         android:text="AB"
-                        android:background="@drawable/capsule_profile"/>
+                        android:textAlignment="center"
+                        android:textSize="15sp" />
                 </LinearLayout>
 
                 <TextView
@@ -174,16 +177,17 @@
                         android:text="RHESUS"
                         android:textSize="12sp"
                         android:textAllCaps="true"/>
+
                     <TextView
-                        android:id="@+id/rhesus"
+                        android:id="@+id/tv_rhesus"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
+                        android:background="@drawable/capsule_profile"
                         android:padding="15dp"
-                        android:textSize="15sp"
-                        android:textAlignment="center"
                         android:text="+"
-                        android:background="@drawable/capsule_profile"/>
+                        android:textAlignment="center"
+                        android:textSize="15sp" />
                 </LinearLayout>
             </LinearLayout>
 
