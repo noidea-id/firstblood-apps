@@ -13,8 +13,8 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="?android:attr/colorPrimary"
             app:titleTextColor="@color/colorAccent">
             <TextView
                 android:layout_width="wrap_content"
@@ -35,14 +35,12 @@
         android:layout_below="@+id/appBarLayout2"
         android:background="@color/colorBody"
         >
-        <ListView
-            android:id="@+id/timeline"
-            android:divider="@null"
-            android:footerDividersEnabled="false"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-        </ListView>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rc_timeline"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true" />
     </RelativeLayout>
 
 </RelativeLayout>

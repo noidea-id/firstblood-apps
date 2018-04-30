@@ -43,7 +43,7 @@ public class DbUsers {
         Users u = new Users();
 
 
-        String[] cols = new String[]{"email, nama, goldar, rhesus, no_hp, foto_profil"};
+        String[] cols = new String[]{"email", "nama", "goldar", "rhesus", "no_hp", "foto_profil"};
         //parameter, akan mengganti ? pada NAMA=?
         String[] param = {"" + username};
 

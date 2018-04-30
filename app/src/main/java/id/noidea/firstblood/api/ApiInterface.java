@@ -1,6 +1,7 @@
 package id.noidea.firstblood.api;
 import java.util.List;
 
+import id.noidea.firstblood.model.Posting;
 import id.noidea.firstblood.model.Users;
 import retrofit2.Call;
 import retrofit2.http.DELETE;
@@ -9,7 +10,9 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
+import retrofit2.http.Url;
 
 /**
  * Created by amaceh on 4/21/2018.
@@ -35,7 +38,41 @@ public interface ApiInterface {
                                       @Field("password") String password, @Field("nama")String nama,
                                       @Field("goldar") String goldar, @Field("rhesus") String rhesus,
                                       @Field("no_hp") String no_hp, @Field("foto_profil") String foto_profil);
-    //example code
+
+    //posting Request
+    @GET("posting/")
+    Call<ApiData<List<Posting>>> getAllPosting(@Query("key") String key);
+
+    @GET("posting/{id}")
+    Call<ApiData<List<Posting>>> getSinglePosting(@Path("id") String id_posting, @Query("key") String key);
+
+    @GET("posting/latest")
+    Call<ApiData<List<Posting>>> getLatestPosting(@Query("key") String key, @Query("time") String time);
+
+    @FormUrlEncoded
+    @POST("posting/")
+    Call<ApiData<Integer>> addPosting(@Query("key") String key,
+                                     @Field("username") String username, @Field("goldar") String goldar,
+                                     @Field("rhesus") String rhesus, @Field("descrip") String descrip,
+                                     @Field("rumah_sakit") String rumah_sakit, @Field("status") String status,
+                                     @Field("inserted_at") String inserted_at, @Field("updated_at") String updated_at);
+
+    @FormUrlEncoded
+    @PUT("posting/")
+    Call<ApiData<Integer>> updatePosting(@Query("key") String key,
+                                         @Field("id_posting") String id_posting, @Field("goldar") String goldar,
+                                         @Field("rhesus") String rhesus, @Field("descrip") String descrip,
+                                         @Field("rumah_sakit") String rumah_sakit, @Field("status") String status,
+                                         @Field("updated_at") String updated_at);
+
+    @FormUrlEncoded
+    @DELETE("posting/{id_posting}")
+    Call<ApiData<Integer>> deleteMatkul(@Query("key") String key, @Path("id_posting") String id_posting);
+
+
+
+
+//  example code
 //    @GET("kuliah/")
 //    Call<ApiData<Kuliah>> getAllMatkul(@Query("key") String key);
 //

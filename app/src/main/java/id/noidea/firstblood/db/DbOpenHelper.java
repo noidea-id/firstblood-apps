@@ -14,6 +14,13 @@ public class DbOpenHelper extends SQLiteOpenHelper {
             "nama TEXT NOT NULL, goldar TEXT NOT NULL, " +
             "rhesus TEXT NOT NULL, no_hp TEXT NOT NULL," +
             "foto_profil TEXT)";
+    private static final String CREATE_TABLE_POSTING = "CREATE TABLE POSTING(username TEXT PRIMARY KEY," +
+            "nama TEXT NOT NULL, foto_profil TEXT NOT NULL, " +
+            "goldar TEXT NOT NULL, rhesus TEXT NOT NULL," +
+            "descrip TEXT NOT NULL, rumah_sakit TEXT NOT NULL," +
+            "status TEXT NOT NULL, inserted_at TEXT NOT NULL," +
+            "updated_at TEXT NOT NULL)";
+
 
     public DbOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -21,11 +28,13 @@ public class DbOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_USERS);
+        db.execSQL(CREATE_TABLE_POSTING);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS USERS");
+        db.execSQL("DROP TABLE IF EXISTS POSTING");
         onCreate(db);
     }
 }

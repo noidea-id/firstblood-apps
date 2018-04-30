@@ -1,135 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorBody"
-    android:paddingTop="16dp"
+    android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:paddingLeft="16dp">
+    android:paddingTop="16dp">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_square">
+
         <LinearLayout
             android:id="@+id/card1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="15dp">
+
             <ImageView
-                android:id="@+id/picture"
+                android:id="@+id/im_profile"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/user"/>
+                android:src="@drawable/user" />
+
             <LinearLayout
+                android:id="@+id/item_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
-                    android:id="@+id/desc"
+                    android:id="@+id/tv_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="wdadad wdawda wdawd awda wda wd aw da da wdawda da wda wdawdada da da wd aw da"/>
+                    android:text="@string/play_again_desc" />
+
                 <RelativeLayout
-                    android:layout_marginTop="15dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
                     <TextView
-                        android:background="@drawable/capsule_button"
-                        android:id="@+id/blood"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:textColor="@color/colorAccent"
-                        android:textStyle="bold"
+                        android:id="@+id/tv_goldar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="10dp"
                         android:layout_marginRight="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="B-"/>
-                    <TextView
-                        android:id="@+id/status"
                         android:background="@drawable/capsule_button"
-                        android:paddingTop="5dp"
                         android:paddingBottom="5dp"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
+                        android:paddingTop="5dp"
+                        android:text=""
                         android:textColor="@color/colorAccent"
-                        android:textStyle="bold"
-                        android:layout_toRightOf="@+id/blood"
-                        android:layout_width="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_height="wrap_content"
-                        android:text="Status"/>
+                        android:textStyle="bold" />
+
                     <TextView
-                        android:id="@+id/date"
-                        android:layout_alignParentRight="true"
+                        android:id="@+id/tv_status"
                         android:layout_width="wrap_content"
-                        android:layout_centerVertical="true"
                         android:layout_height="wrap_content"
-                        android:text="22 November 2017"/>
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/tv_goldar"
+                        android:layout_toRightOf="@+id/tv_goldar"
+                        android:background="@drawable/capsule_button"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingTop="5dp"
+                        android:text=""
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="22 November 2017" />
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
+
         <LinearLayout
-            android:layout_below="@+id/card1"
-            android:background="@drawable/shape_square"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/card1"
+            android:background="@drawable/shape_square"
             android:orientation="horizontal"
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
             android:weightSum="2">
+
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
+
                 <RelativeLayout
+                    android:id="@+id/link_donor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true">
+
                     <ImageView
                         android:id="@+id/icon_donor"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
+                        android:layout_centerVertical="true"
                         android:layout_marginRight="5dp"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_favorite"/>
+                        android:src="@drawable/ic_favorite" />
+
                     <TextView
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@+id/icon_donor"
-                        android:layout_centerHorizontal="true"
+                        android:id="@+id/tv_donor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Donor"/>
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/icon_donor"
+                        android:text="Donor" />
                 </RelativeLayout>
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
+
                 <RelativeLayout
-                    android:id="@+id/link"
+                    android:id="@+id/link_share"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true">
+
                     <ImageView
                         android:id="@+id/icon_share"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
+                        android:layout_centerVertical="true"
                         android:layout_marginRight="5dp"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_share"/>
+                        android:src="@drawable/ic_share" />
+
                     <TextView
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@+id/icon_share"
-                        android:layout_centerHorizontal="true"
+                        android:id="@+id/tv_share"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Share"/>
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/icon_share"
+                        android:text="Share" />
                 </RelativeLayout>
 
             </RelativeLayout>

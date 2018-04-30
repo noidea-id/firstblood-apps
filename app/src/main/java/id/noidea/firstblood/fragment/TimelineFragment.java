@@ -1,32 +1,41 @@
 package id.noidea.firstblood.fragment;
 
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
-import id.noidea.firstblood.adapter.TimelineAdapter;
-import id.noidea.firstblood.item.Timeline;
 import id.noidea.firstblood.R;
+import id.noidea.firstblood.adapter.TimelineAdapter;
+import id.noidea.firstblood.model.Posting;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class TimelineFragment extends Fragment {
 
-    private ListView listView;
-    ArrayList<Timeline> timelineArrayList;
+    private RecyclerView rc_timeline;
+    List<Posting> postings_list = new ArrayList<>();
+    private Activity activity;
+    TimelineAdapter adapter;
 
     public TimelineFragment() {
         // Required empty public constructor
@@ -39,27 +48,23 @@ public class TimelineFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_timeline, container, false);
         Toolbar toolbar =  view.findViewById(R.id.toolbar);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(null);
-        listView = (ListView) view.findViewById(R.id.timeline);
-        timelineArrayList = new ArrayList<>();
-        timelineArrayList.add(new Timeline("user.jpg","Dibutuhkan segera, golongan darah A+ saat ini juga untuk Sdr. Fathi Abdat, yang sakit kompilasi (jantung, paru-paru, ginjal, diabetes).","B-","+","Menunggu","link.com", "11/22/2017"));
-        timelineArrayList.add(new Timeline("user.jpg","malam saya ibu dari muhammad mutsaqoful fikri penderita anemia aplastik membutuhkan darah golongan darah B yg sedang di rawat di rsup fatmawati jakarta , mohon bantuannya untuk segenap handaitaulan","A+","+","Menunggu","link.com", "11/22/2017"));
-        timelineArrayList.add(new Timeline("user.jpg","URGENT : dibutuhkan golongan darah B+ sebanyak 4 kantong untuk ibu dari teman saya di RSUD Ahmad Yani Metro Lampung Tengah. untuk teman yang berada di lampung dan mau membantu bisa hubungi WA/sms ke +62 896-4648-5244. mohon bantu share jika berkenan. terimakasih.","AB+","+","Menunggu","link.com", "11/22/2017"));
-        TimelineAdapter adapter = new TimelineAdapter(getContext(),timelineArrayList);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        ((AppCompatActivity)activity).setSupportActionBar(toolbar);
+        ((AppCompatActivity)activity).getSupportActionBar().setTitle(null);
+        rc_timeline = view.findViewById(R.id.rc_timeline);
 
-            }
-        });
+        postings_list.add(new Posting("a", "a", "a", "B","+", "dibutuhkan bantuan segera","a", "menunngu","20 april 2018", "c"));
+        postings_list.add(new Posting("a", "b", "a", "A","-", "dibutuhkan bantuan segera dibutuhkan bantuan segera","a", "selesai","20 februari 2018", "c"));
+        postings_list.add(new Posting("a", "c", "a", "AB","+", "dibutuhkan bantuan segera dibutuhkan bantuan segera dibutuhkan bantuan segera","a", "selesai","30 januari 2018", "c"));
 
+        adapter = new TimelineAdapter(activity, postings_list);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(activity);
+        rc_timeline.setLayoutManager(layoutManager);
+        rc_timeline.setAdapter(adapter);
 
         return view;
     }
@@ -71,4 +76,11 @@ public class TimelineFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof Activity){
+            activity=(Activity) context;
+        }
+    }
 }
