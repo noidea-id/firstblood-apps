@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/colorBody"
     tools:context="id.noidea.firstblood.activity.FindActivity"
     android:fillViewport="true">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
 
             android:paddingBottom="16dp"
             android:paddingLeft="25dp"
@@ -25,9 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="19dp"
-                android:layout_below="@+id/tv_no_hp">
+                android:layout_marginTop="19dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -41,7 +35,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:text="GOLONGAN DARAH"
+                        android:text="@string/label_golongan_darah"
                         android:textSize="12sp"
                         android:textAllCaps="true"/>
                     <RelativeLayout
@@ -78,7 +72,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:text="RHESUS"
+                        android:text="@string/label_rhesus"
                         android:textSize="12sp"
                         android:textAllCaps="true"/>
                     <RelativeLayout
@@ -104,7 +98,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:text="DESKRIPSI"
+                android:text="@string/label_deskripsi"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="12sp"
                 android:textAllCaps="true"/>
@@ -116,10 +110,10 @@
                 android:layout_marginTop="5dp"
                 android:padding="15dp"
                 android:textSize="15sp"
+                android:hint="@string/label_deskripsi"
                 android:inputType="textMultiLine"
                 android:textCursorDrawable="@null"
                 android:textAlignment="center"
-                android:text="Dibutuhkan segera, golongan darah A+ saat ini juga untuk Sdr. Fathi Abdat, yang sakit kompilasi (jantung, paru-paru, ginjal, diabetes)."
                 android:background="@drawable/capsule_profile"/>
             <TextView
                 android:id="@+id/rs_title"
@@ -127,7 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:text="RUMAH SAKIT"
+                android:text="@string/label_rumah_sakit"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="12sp"
                 android:textAllCaps="true"/>
@@ -142,7 +136,7 @@
                 android:inputType="text"
                 android:textCursorDrawable="@null"
                 android:textAlignment="center"
-                android:text="Rumah Sakit Advent - Bandung"
+                android:hint="@string/label_rumah_sakit"
                 android:background="@drawable/capsule_profile"/>
             <Button
                 android:id="@+id/find"
@@ -152,10 +146,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textSize="14sp"
-                android:text="KIRIM PERMINTAAN"
+                android:text="@string/bt_kirim_permintaan"
                 android:textAllCaps="true"
                 android:background="@drawable/capsule_button"/>
         </LinearLayout>
-    </ScrollView>
+</ScrollView>
 
-</RelativeLayout>

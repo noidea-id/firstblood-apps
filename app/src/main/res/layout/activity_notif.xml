@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="id.noidea.firstblood.activity.NotifActivity">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
         <RelativeLayout
@@ -25,8 +24,9 @@
                     android:id="@+id/picture"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/user"/>
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/user"
+                    android:contentDescription="@string/desc_profile_picture" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
                         android:id="@+id/desc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Dibutuhkan segera, golongan darah A+ saat ini juga untuk Sdr. Fathi Abdat, yang sakit kompilasi (jantung, paru-paru, ginjal, diabetes)."/>
+                        android:text="@string/bcd1"/>
                     <RelativeLayout
                         android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
@@ -49,11 +49,11 @@
                             android:paddingRight="15dp"
                             android:textColor="@color/colorAccent"
                             android:textStyle="bold"
-                            android:layout_marginRight="10dp"
+                            android:layout_marginEnd="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:text="A+"/>
+                            android:text="@string/bcd2"/>
                         <TextView
                             android:id="@+id/status"
                             android:background="@drawable/capsule_button"
@@ -63,18 +63,20 @@
                             android:paddingRight="15dp"
                             android:textColor="@color/colorAccent"
                             android:textStyle="bold"
-                            android:layout_toRightOf="@+id/tv_goldar"
+                            android:layout_toEndOf="@+id/tv_goldar"
                             android:layout_width="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_height="wrap_content"
-                            android:text="Status"/>
+                            android:text="@string/bcd3"
+                            tools:ignore="RelativeOverlap" />
                         <TextView
                             android:id="@+id/date"
-                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
                             android:layout_width="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_height="wrap_content"
-                            android:text="22/11/2017"/>
+                            android:text="@string/bcd4"
+                            tools:ignore="RelativeOverlap" />
                     </RelativeLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -95,8 +97,9 @@
                     android:id="@+id/picture2"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/user"/>
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/user"
+                    android:contentDescription="@string/desc_profile_picture" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -105,7 +108,7 @@
                         android:id="@+id/desc2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="malam saya ibu dari muhammad mutsaqoful fikri penderita anemia aplastik membutuhkan darah golongan darah B yg sedang di rawat di rsup fatmawati jakarta , mohon bantuannya untuk segenap handaitaulan"/>
+                        android:text="@string/bcd6"/>
                     <RelativeLayout
                         android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
@@ -119,11 +122,11 @@
                             android:paddingRight="15dp"
                             android:textColor="@color/colorAccent"
                             android:textStyle="bold"
-                            android:layout_marginRight="10dp"
+                            android:layout_marginEnd="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:text="B-"/>
+                            android:text="@string/bcd7"/>
                         <TextView
                             android:id="@+id/status2"
                             android:background="@drawable/capsule_button"
@@ -133,18 +136,19 @@
                             android:paddingRight="15dp"
                             android:textColor="@color/colorAccent"
                             android:textStyle="bold"
-                            android:layout_toRightOf="@+id/blood2"
+                            android:layout_toEndOf="@+id/blood2"
                             android:layout_width="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_height="wrap_content"
-                            android:text="Status"/>
+                            android:text="@string/bcd3"/>
                         <TextView
                             android:id="@+id/date2"
-                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
                             android:layout_width="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_height="wrap_content"
-                            android:text="22/11/2017"/>
+                            android:text="@string/bcd4"
+                            tools:ignore="RelativeOverlap" />
                     </RelativeLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -165,8 +169,9 @@
                     android:id="@+id/picture3"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/user"/>
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/user"
+                    android:contentDescription="@string/desc_profile_picture" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -175,7 +180,7 @@
                         android:id="@+id/desc3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Permisi. Mohon bantuannya untuk yang bersedia mendonorkan darah O+.paman dari keluarga saya sedang kritis dan membutuhkan darah O+ malam ini untuk teman teman dan om,tante, semua yg bersdia untuk mendonorkan darah nya bisa untuk menghubungi saya "/>
+                        android:text="@string/bcd5"/>
                     <RelativeLayout
                         android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
@@ -189,11 +194,11 @@
                             android:paddingRight="15dp"
                             android:textColor="@color/colorAccent"
                             android:textStyle="bold"
-                            android:layout_marginRight="10dp"
+                            android:layout_marginEnd="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:text="O+"/>
+                            android:text="@string/bcd9"/>
                         <TextView
                             android:id="@+id/status3"
                             android:background="@drawable/capsule_button"
@@ -203,88 +208,19 @@
                             android:paddingRight="15dp"
                             android:textColor="@color/colorAccent"
                             android:textStyle="bold"
-                            android:layout_toRightOf="@+id/blood3"
+                            android:layout_toEndOf="@+id/blood3"
                             android:layout_width="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_height="wrap_content"
-                            android:text="Status"/>
+                            android:text="@string/bcd3"/>
                         <TextView
                             android:id="@+id/date3"
-                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
                             android:layout_width="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_height="wrap_content"
-                            android:text="22/11/2017"/>
-                    </RelativeLayout>
-                </LinearLayout>
-            </LinearLayout>
-
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/shape_square">
-            <LinearLayout
-                android:id="@+id/card4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="15dp">
-                <ImageView
-                    android:id="@+id/picture4"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/user"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <TextView
-                        android:id="@+id/desc4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Permisi. Mohon bantuannya untuk yang bersedia mendonorkan darah AB+. Ibu dari seorang teman sedang kritis. Lokasi RS Kramat/PMI pusat, Jakarta."/>
-                    <RelativeLayout
-                        android:layout_marginTop="15dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:background="@drawable/capsule_button"
-                            android:id="@+id/blood4"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="15dp"
-                            android:textColor="@color/colorAccent"
-                            android:textStyle="bold"
-                            android:layout_marginRight="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:text="AB-"/>
-                        <TextView
-                            android:id="@+id/status4"
-                            android:background="@drawable/capsule_button"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="15dp"
-                            android:textColor="@color/colorAccent"
-                            android:textStyle="bold"
-                            android:layout_toRightOf="@+id/blood4"
-                            android:layout_width="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_height="wrap_content"
-                            android:text="Status"/>
-                        <TextView
-                            android:id="@+id/date4"
-                            android:layout_alignParentRight="true"
-                            android:layout_width="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_height="wrap_content"
-                            android:text="22/11/2017"/>
+                            android:text="@string/bcd4"
+                            tools:ignore="RelativeOverlap" />
                     </RelativeLayout>
                 </LinearLayout>
             </LinearLayout>

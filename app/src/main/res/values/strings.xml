@@ -17,6 +17,9 @@
     <string name="hp_h">No Handphone</string>
     <string name="reg_btn">Daftar Akun</string>
 
+
+
+
     <string name="title_activity_welcome">Home Screen</string>
     <string name="next">LANJUT</string>
     <string name="skip">LEWATI</string>
@@ -42,6 +45,43 @@
     <string name="daftar">Daftar di sini.</string>
 
     <string name="loading">Sedang Memproses..</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--Find Activity-->
+    <string name="label_golongan_darah">GOLONGAN DARAH</string>
+    <string name="label_rhesus">RHESUS</string>
+    <string name="label_deskripsi">DESKRIPSI</string>
+    <string name="label_rumah_sakit">RUMAH SAKIT</string>
+    <string name="bt_kirim_permintaan">KIRIM PERMINTAAN</string>
+    <string name="desc_profile_picture">Profile Picture</string>
+    <string name="bcd2">A+</string>
+    <string name="bcd1">Dibutuhkan segera, golongan darah A+ saat ini juga untuk Sdr. Fathi Abdat, yang sakit kompilasi (jantung, paru-paru, ginjal, diabetes).</string>
+    <string name="bcd3">Status</string>
+    <string name="bcd4">22/11/2017</string>
+    <string name="bcd6">malam saya ibu dari muhammad mutsaqofucl fikri penderita anemia aplastik membutuhkan darah golongan darah B yg sedang di rawat di rsup fatmawati jakarta , mohon bantuannya untuk segenap handaitaulan</string>
+    <string name="bcd7">B-</string>
+    <string name="bcd5">Permisi. Mohon bantuannya untuk yang bersedia mendonorkan darah O+.paman dari keluarga saya sedang kritis dan membutuhkan darah O+ malam ini untuk teman-teman dan om,tante, semua yg bersdia untuk mendonorkan darah nya bisa untuk menghubungi saya</string>
+    <string name="bcd9">O+</string>
+    <string name="label_verifikasi">Verifikasi</string>
+    <string name="label_verify">Verifikasi Akun Anda</string>
+    <string name="label_done">Kami telah mengirimkan kode verifikasi ke nomor anda.</string>
+    <string name="label_nohp">{{Nomor HP}}</string>
+    <string name="zero">0</string>
+    <string name="dummy_date">22 November 2017</string>
+    <string name="desc_icon_donor">icon donor</string>
+    <string name="bt_donor">Donor</string>
+    <string name="bt_share">Share</string>
+    <string name="desc_share_icon">share icon</string>
+    <string name="bt_donor_darah">DONOR DARAH</string>
+    <string name="bt_cari_donor">CARI DONOR</string>
+    <string name="appbar_profil">Profil</string>
+    <string name="label_nama">NAMA</string>
+    <string name="label_e_mail">E-MAIL</string>
+    <string name="label_no_handphone">NO HANDPHONE</string>
+    <string name="bt_logout">Logout</string>
+    <string name="appbar_linimasa">Linimasa</string>
+
+
 </resources>

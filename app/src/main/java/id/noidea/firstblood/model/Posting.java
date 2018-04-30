@@ -1,12 +1,14 @@
 package id.noidea.firstblood.model;
 
 public class Posting {
-    private String username, nama, foto_profil, goldar, rhesus, descrip, rumah_sakit, status, inserted_at, updated_at;
+    private int id_post;
+    private String  username, nama, foto_profil, goldar, rhesus, descrip, rumah_sakit, status, inserted_at, updated_at;
 
     public Posting() {
     }
 
-    public Posting(String username, String nama, String foto_profil, String goldar, String rhesus, String descrip, String rumah_sakit, String status, String inserted_at, String updated_at) {
+    public Posting(int id_post, String username, String nama, String foto_profil, String goldar, String rhesus, String descrip, String rumah_sakit, String status, String inserted_at, String updated_at) {
+        this.id_post = id_post;
         this.username = username;
         this.nama = nama;
         this.foto_profil = foto_profil;
@@ -17,6 +19,14 @@ public class Posting {
         this.status = status;
         this.inserted_at = inserted_at;
         this.updated_at = updated_at;
+    }
+
+    public int getId_post() {
+        return id_post;
+    }
+
+    public void setId_post(int id_post) {
+        this.id_post = id_post;
     }
 
     public String getUsername() {

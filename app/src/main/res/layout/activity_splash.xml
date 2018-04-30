@@ -28,6 +28,7 @@
         android:layout_marginTop="150dp"
         android:id="@+id/imageView"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/app_name" />
 
 </RelativeLayout>

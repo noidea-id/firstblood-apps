@@ -13,13 +13,13 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="?android:attr/colorPrimary"
             app:titleTextColor="@color/colorAccent">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Profil"
+                android:text="@string/appbar_profil"
                 android:layout_gravity="center"
                 android:textColor="@color/colorAccent"
                 style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
@@ -34,7 +34,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/colorBody"
             android:paddingBottom="16dp"
             android:paddingLeft="25dp"
@@ -46,8 +46,6 @@
                 android:id="@+id/profile_image"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
                 android:layout_marginBottom="15dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
@@ -61,7 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:text="NAMA"
+                android:text="@string/label_nama"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="12sp"
                 android:textAllCaps="true"/>
@@ -73,7 +71,6 @@
                 android:layout_marginTop="5dp"
                 android:background="@drawable/capsule_profile"
                 android:padding="15dp"
-                android:text="Naufal Fazanadi"
                 android:textAlignment="center"
                 android:textSize="15sp" />
             <TextView
@@ -83,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:text="E-MAIL"
+                android:text="@string/label_e_mail"
                 android:textSize="12sp"
                 android:textAllCaps="true"/>
 
@@ -94,7 +91,6 @@
                 android:layout_marginTop="5dp"
                 android:background="@drawable/capsule_profile"
                 android:padding="15dp"
-                android:text="naufal.fazanadi@gmail.com"
                 android:textAlignment="center"
                 android:textSize="15sp" />
             <TextView
@@ -104,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:text="NO HANDPHONE"
+                android:text="@string/label_no_handphone"
                 android:textSize="12sp"
                 android:textAllCaps="true"/>
             <TextView
@@ -115,7 +111,6 @@
                 android:padding="15dp"
                 android:textSize="15sp"
                 android:textAlignment="center"
-                android:text="087829473940"
                 android:background="@drawable/capsule_profile"/>
 
             <LinearLayout
@@ -124,9 +119,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="15dp"
-                android:layout_below="@+id/tv_no_hp">
+                android:layout_marginTop="15dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -140,7 +133,7 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_marginTop="20dp"
-                        android:text="GOLONGAN DARAH"
+                        android:text="@string/label_golongan_darah"
                         android:textAllCaps="true"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="12sp" />
@@ -152,7 +145,6 @@
                         android:layout_marginTop="5dp"
                         android:background="@drawable/capsule_profile"
                         android:padding="15dp"
-                        android:text="AB"
                         android:textAlignment="center"
                         android:textSize="15sp" />
                 </LinearLayout>
@@ -174,7 +166,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:text="RHESUS"
+                        android:text="@string/label_rhesus"
                         android:textSize="12sp"
                         android:textAllCaps="true"/>
 
@@ -185,7 +177,6 @@
                         android:layout_marginTop="5dp"
                         android:background="@drawable/capsule_profile"
                         android:padding="15dp"
-                        android:text="+"
                         android:textAlignment="center"
                         android:textSize="15sp" />
                 </LinearLayout>
@@ -199,8 +190,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textSize="14sp"
-                android:onClick="logout"
-                android:text="logout"
+                android:text="@string/bt_logout"
                 android:textAllCaps="true"
                 android:background="@drawable/capsule_button"/>
 

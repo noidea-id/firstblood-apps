@@ -13,14 +13,15 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="?android:attr/colorPrimary"
             app:titleTextColor="@color/colorAccent">
             <ImageView
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/logo_horizontal"/>
+                android:src="@drawable/logo_horizontal"
+                android:contentDescription="@string/app_name" />
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
     <RelativeLayout
@@ -43,7 +44,7 @@
                 android:id="@+id/donate_button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="DONOR DARAH"
+                android:text="@string/bt_donor_darah"
                 android:textColor="@color/colorAccent"
                 android:layout_weight="0.45"
                 android:background="@drawable/capsule_home"
@@ -56,7 +57,7 @@
                 android:id="@+id/request_button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="CARI DONOR"
+                android:text="@string/bt_cari_donor"
                 android:textColor="@color/colorAccent"
                 android:layout_weight="0.45"
                 android:background="@drawable/capsule_home"

@@ -26,6 +26,6 @@
         android:layout_height="wrap_content"
         tools:ignore="ObsoleteLayoutParam"
         android:textColor="@color/colorAccent"
-        android:layout_toRightOf="@+id/loader" />
+         />
 
 </LinearLayout>

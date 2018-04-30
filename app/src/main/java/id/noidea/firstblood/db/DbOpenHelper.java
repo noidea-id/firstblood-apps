@@ -14,7 +14,8 @@ public class DbOpenHelper extends SQLiteOpenHelper {
             "nama TEXT NOT NULL, goldar TEXT NOT NULL, " +
             "rhesus TEXT NOT NULL, no_hp TEXT NOT NULL," +
             "foto_profil TEXT)";
-    private static final String CREATE_TABLE_POSTING = "CREATE TABLE POSTING(username TEXT PRIMARY KEY," +
+    private static final String CREATE_TABLE_POSTING = "CREATE TABLE POSTING(" +
+            "id_post INTEGER PRIMARY KEY, username TEXT PRIMARY KEY," +
             "nama TEXT NOT NULL, foto_profil TEXT NOT NULL, " +
             "goldar TEXT NOT NULL, rhesus TEXT NOT NULL," +
             "descrip TEXT NOT NULL, rumah_sakit TEXT NOT NULL," +

@@ -57,9 +57,9 @@ public class TimelineFragment extends Fragment {
         ((AppCompatActivity)activity).getSupportActionBar().setTitle(null);
         rc_timeline = view.findViewById(R.id.rc_timeline);
 
-        postings_list.add(new Posting("a", "a", "a", "B","+", "dibutuhkan bantuan segera","a", "menunngu","20 april 2018", "c"));
-        postings_list.add(new Posting("a", "b", "a", "A","-", "dibutuhkan bantuan segera dibutuhkan bantuan segera","a", "selesai","20 februari 2018", "c"));
-        postings_list.add(new Posting("a", "c", "a", "AB","+", "dibutuhkan bantuan segera dibutuhkan bantuan segera dibutuhkan bantuan segera","a", "selesai","30 januari 2018", "c"));
+        postings_list.add(new Posting(1,"a", "a", "a", "B","+", "dibutuhkan bantuan segera","a", "menunngu","20 april 2018", "c"));
+        postings_list.add(new Posting(2,"a", "b", "a", "A","-", "dibutuhkan bantuan segera dibutuhkan bantuan segera","a", "selesai","20 februari 2018", "c"));
+        postings_list.add(new Posting(3, "a", "c", "a", "AB","+", "dibutuhkan bantuan segera dibutuhkan bantuan segera dibutuhkan bantuan segera","a", "selesai","30 januari 2018", "c"));
 
         adapter = new TimelineAdapter(activity, postings_list);
         LinearLayoutManager layoutManager = new LinearLayoutManager(activity);
