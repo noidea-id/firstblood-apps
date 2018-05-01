@@ -3,6 +3,7 @@ package id.noidea.firstblood.adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import id.noidea.firstblood.R;
@@ -50,8 +52,16 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
         holder.im_profile.setImageDrawable(mInflater.getContext().getResources().getDrawable(R.drawable.user));
         holder.tv_desc.setText(pstng.getDescrip());
         holder.tv_goldar.setText(pstng.getGoldar()+pstng.getRhesus());
-        holder.tv_status.setText(pstng.getStatus());
-        holder.tv_date.setText(pstng.getInserted_at());
+        if(pstng.getStatus().equals("0")){
+            holder.tv_status.setText(mInflater.getContext().getString(R.string.status_0));
+        }else if (pstng.getStatus().equals("1")){
+            holder.tv_status.setText(mInflater.getContext().getString(R.string.status_1));
+        }
+        //damn mysql date format, have no choice but flip it like a fools
+        String date = pstng.getInserted_at().split(" ")[0];
+        String[] date2 = date.split("-");
+        date = TextUtils.join("-", Arrays.asList(date2[2], date2[1], date2[0]));
+        holder.tv_date.setText(date);
 
         holder.link_donor.setOnClickListener(new View.OnClickListener() {
             @Override

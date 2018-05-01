@@ -46,7 +46,7 @@ public interface ApiInterface {
     @GET("posting/{id}")
     Call<ApiData<List<Posting>>> getSinglePosting(@Path("id") String id_posting, @Query("key") String key);
 
-    @GET("posting/latest")
+    @GET("posting/latest/")
     Call<ApiData<List<Posting>>> getLatestPosting(@Query("key") String key, @Query("time") String time);
 
     @FormUrlEncoded

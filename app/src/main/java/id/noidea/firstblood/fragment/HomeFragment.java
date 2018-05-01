@@ -1,10 +1,14 @@
 package id.noidea.firstblood.fragment;
 
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -27,7 +31,6 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import java.util.HashMap;
 
 import id.noidea.firstblood.activity.FindActivity;
-import id.noidea.firstblood.activity.HomeActivity;
 import id.noidea.firstblood.activity.NotifActivity;
 import id.noidea.firstblood.R;
 
@@ -38,6 +41,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
 
     SliderLayout mDemoSlider;
     Button donate_button,request_button;
+    private Activity activity;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -51,18 +55,22 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_home, container, false);
         Toolbar toolbar =  view.findViewById(R.id.toolbar);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(null);
-        mDemoSlider = (SliderLayout) view.findViewById(R.id.slider);
-        donate_button = (Button) view.findViewById(R.id.donate_button);
-        request_button = (Button) view.findViewById(R.id.request_button);
+        ((AppCompatActivity)activity).setSupportActionBar(toolbar);
+        ActionBar mActionBar = ((AppCompatActivity)activity).getSupportActionBar();
+        if (mActionBar!=null) {
+            mActionBar.setTitle(null);
+        }
 
-        HashMap<String,Integer> file_maps = new HashMap<String, Integer>();
+        mDemoSlider = view.findViewById(R.id.slider);
+        donate_button = view.findViewById(R.id.donate_button);
+        request_button = view.findViewById(R.id.request_button);
+
+        HashMap<String,Integer> file_maps = new HashMap<>();
         file_maps.put("1",R.drawable.fact2);
         file_maps.put("2",R.drawable.fact3);
         file_maps.put("3",R.drawable.fact4);
@@ -80,13 +88,13 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
         mDemoSlider.setDuration(4000);
         mDemoSlider.setIndicatorVisibility(PagerIndicator.IndicatorVisibility.Invisible);
         mDemoSlider.addOnPageChangeListener(this);
-        BottomNavigationViewEx navigation = (BottomNavigationViewEx) getActivity().findViewById(R.id.navigation);
+        final BottomNavigationViewEx navigation = activity.findViewById(R.id.navigation);
         donate_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(),HomeActivity.class);
-                intent.putExtra("viewpager_position", 0);
-                startActivity(intent);
+                //emulate click instead call unlimeted activity that minght troubling our glorius garbage collector
+                View v = navigation.findViewById(R.id.navigation_timeline);
+                v.performClick();
             }
         });
         request_button.setOnClickListener(new View.OnClickListener() {
@@ -136,5 +144,11 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
                 return super.onOptionsItemSelected(item);
         }
     }
-
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof Activity){
+            activity=(Activity) context;
+        }
+    }
 }

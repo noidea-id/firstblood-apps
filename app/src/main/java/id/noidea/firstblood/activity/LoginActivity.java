@@ -97,6 +97,7 @@ public class LoginActivity extends Activity {
                         ed.putString("username", account.getData().getUsername());
                         ed.putString("api_key", account.getData().getApi_key());
                         ed.putBoolean("logged", true);
+                        ed.putString("last_sync", "0000-00-00 00.00.00");
                         ed.apply();
                         dbU.deleteAll();
                         long check = dbU.insertUser(account.getData());

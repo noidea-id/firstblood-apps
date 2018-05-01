@@ -96,6 +96,6 @@ public class DbPosting {
     }
 
     public void deleteAll() {
-        db.delete("users", null, null);
+        db.delete("posting", null, null);
     }
 }

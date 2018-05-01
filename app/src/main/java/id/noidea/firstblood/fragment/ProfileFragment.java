@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -62,10 +63,13 @@ public class ProfileFragment extends Fragment {
 
         loadProfile();
 
-        logout = (Button) view.findViewById(R.id.btnLogout);
-        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
+        logout = view.findViewById(R.id.btnLogout);
+        Toolbar toolbar = view.findViewById(R.id.toolbar);
         ((AppCompatActivity)activity).setSupportActionBar(toolbar);
-        ((AppCompatActivity)activity).getSupportActionBar().setTitle(null);
+        ActionBar mActionBar = ((AppCompatActivity)activity).getSupportActionBar();
+        if (mActionBar!=null) {
+            mActionBar.setTitle(null);
+        }
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
