@@ -9,7 +9,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:paddingBottom="16dp"
             android:paddingLeft="25dp"
             android:paddingRight="25dp"
@@ -41,17 +40,17 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
                         android:layout_marginTop="5dp"
                         android:padding="15dp"
                         android:background="@drawable/capsule_profile">
+
                         <Spinner
-                            android:id="@+id/spinner"
+                            android:id="@+id/sp_goldar"
                             android:layout_width="match_parent"
-                            android:textSize="18sp"
-                            android:textAlignment="center"
                             android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true" />
+                            android:layout_centerHorizontal="true"
+                            android:textAlignment="center"
+                            android:textSize="18sp" />
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -82,13 +81,14 @@
                         android:layout_marginTop="5dp"
                         android:padding="15dp"
                         android:background="@drawable/capsule_profile">
+
                         <Spinner
-                            android:id="@+id/spinner2"
+                            android:id="@+id/sp_rhesus"
                             android:layout_width="match_parent"
-                            android:textSize="18sp"
-                            android:textAlignment="center"
                             android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true" />
+                            android:layout_centerHorizontal="true"
+                            android:textAlignment="center"
+                            android:textSize="18sp" />
                     </RelativeLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -104,17 +104,17 @@
                 android:textAllCaps="true"/>
 
             <EditText
-                android:id="@+id/name"
+                android:id="@+id/et_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:padding="15dp"
-                android:textSize="15sp"
+                android:background="@drawable/capsule_profile"
                 android:hint="@string/label_deskripsi"
                 android:inputType="textMultiLine"
-                android:textCursorDrawable="@null"
+                android:padding="15dp"
                 android:textAlignment="center"
-                android:background="@drawable/capsule_profile"/>
+                android:textCursorDrawable="@null"
+                android:textSize="15sp" />
             <TextView
                 android:id="@+id/rs_title"
                 android:layout_marginTop="20dp"
@@ -127,17 +127,17 @@
                 android:textAllCaps="true"/>
 
             <EditText
-                android:id="@+id/name_rs"
+                android:id="@+id/et_rumah_sakit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:padding="15dp"
-                android:textSize="15sp"
-                android:inputType="text"
-                android:textCursorDrawable="@null"
-                android:textAlignment="center"
+                android:background="@drawable/capsule_profile"
                 android:hint="@string/label_rumah_sakit"
-                android:background="@drawable/capsule_profile"/>
+                android:inputType="text"
+                android:padding="15dp"
+                android:textAlignment="center"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp" />
             <Button
                 android:id="@+id/find"
                 android:textColor="@color/colorAccent"

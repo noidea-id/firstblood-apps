@@ -3,7 +3,6 @@ package id.noidea.firstblood.fragment;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,7 +11,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -26,22 +24,17 @@ import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 import id.noidea.firstblood.R;
-import id.noidea.firstblood.activity.HomeActivity;
-import id.noidea.firstblood.activity.LoginActivity;
 import id.noidea.firstblood.adapter.TimelineAdapter;
 import id.noidea.firstblood.api.ApiClient;
 import id.noidea.firstblood.api.ApiData;
 import id.noidea.firstblood.api.ApiInterface;
 import id.noidea.firstblood.db.DbPosting;
 import id.noidea.firstblood.model.Posting;
-import id.noidea.firstblood.model.Users;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -120,7 +113,7 @@ public class TimelineFragment extends Fragment {
      * Current Implementation of near Realtime timeline
      * call the backend every 10 second, and add whatever available there to db and refresh rcview
      * this operation is stopped at shouldStopLoop attribute
-     * this is dirty soultion, because network call is expensive
+     * this is dirty solution, because network call is expensive
      * TODO think better solution that not require expensive operation
      */
     private void syncTimeline(){
@@ -176,8 +169,7 @@ public class TimelineFragment extends Fragment {
                     if (listPost.getStatus().equals("success")){
                         setCurrentSync();
                         for (Posting pst : listPost.getData()) {
-                            long check = dbP.insertPosting(pst);
-                            check=check;
+                            dbP.insertPosting(pst);
                         }
                         postings_list.addAll(listPost.getData());
                         adapter.notifyDataSetChanged();
@@ -202,7 +194,6 @@ public class TimelineFragment extends Fragment {
         SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);//dd/MM/yyyy
         Date now = new Date();
         String strDate = sdfDate.format(now);
-        //System.out.println(strDate);
         SharedPreferences.Editor ed;
         ed = sp.edit();
         ed.putString("last_sync", strDate);

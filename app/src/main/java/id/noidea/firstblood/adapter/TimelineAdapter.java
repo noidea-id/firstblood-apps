@@ -1,6 +1,7 @@
 package id.noidea.firstblood.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -18,6 +19,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import id.noidea.firstblood.R;
+import id.noidea.firstblood.activity.DetailDonorActivity;
 import id.noidea.firstblood.model.Posting;
 
 public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHolder>{
@@ -66,6 +68,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
         holder.link_donor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Toast.makeText(mInflater.getContext(), "donor "+pstng.getNama(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -79,7 +82,10 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
         holder.item_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mInflater.getContext(), "detail "+pstng.getNama(), Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(mInflater.getContext(), DetailDonorActivity.class);
+                i.putExtra("id,noidea.firstblood.posting", pstng.getId_post());
+                mInflater.getContext().startActivity(i);
+                //Toast.makeText(mInflater.getContext(), "detail "+pstng.getNama(), Toast.LENGTH_SHORT).show();
             }
         });
     }

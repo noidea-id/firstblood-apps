@@ -18,8 +18,6 @@
     <string name="reg_btn">Daftar Akun</string>
 
 
-
-
     <string name="title_activity_welcome">Home Screen</string>
     <string name="next">LANJUT</string>
     <string name="skip">LEWATI</string>
@@ -90,8 +88,6 @@
     <string name="bcd9">O+</string>
     <string name="zero">0</string>
     <string name="dummy_date">22 November 2017</string>
-
-
 
 
 </resources>

@@ -50,7 +50,7 @@ public class DbPosting {
         //parameter, akan mengganti ? pada NAMA=?
         String[] param = {"" + id_posting};
 
-        cur = db.query("posting", cols, "username=?", param, null, null, null);
+        cur = db.query("posting", cols, "id_post=?", param, null, null, null);
 
         if (cur.getCount() > 0) {  //ada data? ambil
             cur.moveToFirst();
