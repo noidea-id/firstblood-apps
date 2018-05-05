@@ -43,7 +43,7 @@ public interface ApiInterface {
     @GET("posting/")
     Call<ApiData<List<Posting>>> getAllPosting(@Query("key") String key);
 
-    @GET("posting/{id}")
+    @GET("posting/get/{id}/")
     Call<ApiData<List<Posting>>> getSinglePosting(@Path("id") String id_posting, @Query("key") String key);
 
     @GET("posting/latest/")
@@ -58,16 +58,16 @@ public interface ApiInterface {
                                      @Field("inserted_at") String inserted_at, @Field("updated_at") String updated_at);
 
     @FormUrlEncoded
-    @PUT("posting/")
-    Call<ApiData<Integer>> updatePosting(@Query("key") String key,
-                                         @Field("id_posting") String id_posting, @Field("goldar") String goldar,
+    @PUT("posting/{id_posting}/")
+    Call<ApiData<Integer>> updatePosting(@Path("id_posting") String id_posting, @Query("key") String key,
+                                         @Field("goldar") String goldar,
                                          @Field("rhesus") String rhesus, @Field("descrip") String descrip,
                                          @Field("rumah_sakit") String rumah_sakit, @Field("status") String status,
                                          @Field("updated_at") String updated_at);
 
     @FormUrlEncoded
-    @DELETE("posting/{id_posting}")
-    Call<ApiData<Integer>> deleteMatkul(@Query("key") String key, @Path("id_posting") String id_posting);
+    @DELETE("posting/{id_posting}/")
+    Call<ApiData<Integer>> deleteMatkul(@Path("id_posting") String id_posting, @Query("key") String key);
 
 
 

@@ -126,6 +126,8 @@ public class TimelineFragment extends Fragment {
                 getTimeline();
                 if (!shouldStopLoop) {
                     mHandler.postDelayed(this, 10000);
+                }else{
+                    mHandler.removeCallbacks(this);
                 }
             }
         };
@@ -138,6 +140,7 @@ public class TimelineFragment extends Fragment {
     public void onStart() {
         super.onStart();
         syncTimeline();
+        shouldStopLoop = false;
     }
 
     @Override
@@ -167,16 +170,19 @@ public class TimelineFragment extends Fragment {
 
                 if (listPost != null) {
                     if (listPost.getStatus().equals("success")){
-                        setCurrentSync();
-                        for (Posting pst : listPost.getData()) {
-                            dbP.insertPosting(pst);
+                        //to make sure no syn update when the runnable stopped
+                        if(!shouldStopLoop){
+                            setCurrentSync();
+                            for (Posting pst : listPost.getData()) {
+                                dbP.insertPosting(pst);
+                            }
+                            postings_list.addAll(listPost.getData());
+                            adapter.notifyDataSetChanged();
+                            rc_timeline.getLayoutManager().scrollToPosition(postings_list.size() - 1);
+                            Toast.makeText(activity, "Synced", Toast.LENGTH_SHORT).show();
+
                         }
-                        postings_list.addAll(listPost.getData());
-                        adapter.notifyDataSetChanged();
-                        rc_timeline.getLayoutManager().scrollToPosition(postings_list.size() - 1);
-                        Toast.makeText(activity, "Synched", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
+                    }else{
                         Toast.makeText(activity, "connection error", Toast.LENGTH_LONG).show();
                     }
                 }
