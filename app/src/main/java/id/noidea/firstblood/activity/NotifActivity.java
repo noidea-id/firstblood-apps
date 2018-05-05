@@ -27,4 +27,5 @@ public class NotifActivity extends AppCompatActivity {
         super.onBackPressed();
         finish();
     }
+
 }

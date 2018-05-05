@@ -18,34 +18,29 @@ public class HomeActivity extends AppCompatActivity {
     Button donate_button;
     private static final String TAG = HomeActivity.class.getSimpleName();
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_timeline:
-                    TimelineFragment timelineFragment = new TimelineFragment();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, timelineFragment)
-                            .addToBackStack(null)
-                            .commit();
-                    return true;
-                case R.id.navigation_home:
-                    HomeFragment homeFragment = new HomeFragment();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, homeFragment)
-                            .addToBackStack(null)
-                            .commit();
-                    return true;
-                case R.id.navigation_profile:
-                    ProfileFragment profileFragment = new ProfileFragment();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, profileFragment)
-                            .addToBackStack(null)
-                            .commit();
-                    return true;
-            }
-            return false;
-        }
-
-    };
+            = item -> {
+                switch (item.getItemId()) {
+                    case R.id.navigation_timeline:
+                        TimelineFragment timelineFragment = new TimelineFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, timelineFragment)
+                                .addToBackStack(null)
+                                .commit();
+                        return true;
+                    case R.id.navigation_home:
+                        HomeFragment homeFragment = new HomeFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, homeFragment)
+                                .addToBackStack(null)
+                                .commit();
+                        return true;
+                    case R.id.navigation_profile:
+                        ProfileFragment profileFragment = new ProfileFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, profileFragment)
+                                .addToBackStack(null)
+                                .commit();
+                        return true;
+                }
+                return false;
+            };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +49,8 @@ public class HomeActivity extends AppCompatActivity {
         HomeFragment homeFragment = new HomeFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, homeFragment).addToBackStack(null).commit();
 
-        BottomNavigationViewEx navigation = (BottomNavigationViewEx) findViewById(R.id.navigation);
-        donate_button = (Button) findViewById(R.id.donate_button);
+        BottomNavigationViewEx navigation = findViewById(R.id.navigation);
+        donate_button = findViewById(R.id.donate_button);
         navigation.enableAnimation(false);
         navigation.enableShiftingMode(false);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

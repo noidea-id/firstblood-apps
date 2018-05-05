@@ -36,7 +36,6 @@ public class ProfileFragment extends Fragment {
     private TextView tv_nama, tv_email, tv_goldar, tv_rhesus, tv_no_hp;
     private SharedPreferences sp;
     private SharedPreferences.Editor ed;
-    private Button logout;
     private Activity activity;
     private DbUsers dbU;
 
@@ -63,7 +62,7 @@ public class ProfileFragment extends Fragment {
 
         loadProfile();
 
-        logout = view.findViewById(R.id.btnLogout);
+        Button logout = view.findViewById(R.id.btnLogout);
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         ((AppCompatActivity)activity).setSupportActionBar(toolbar);
         ActionBar mActionBar = ((AppCompatActivity)activity).getSupportActionBar();
@@ -71,16 +70,13 @@ public class ProfileFragment extends Fragment {
             mActionBar.setTitle(null);
         }
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getContext(), LoginActivity.class);
-                ed = sp.edit();
-                ed.clear();
-                ed.apply();
-                activity.finish();
-                startActivity(i);
-            }
+        logout.setOnClickListener(view1 -> {
+            Intent i = new Intent(getContext(), LoginActivity.class);
+            ed = sp.edit();
+            ed.clear();
+            ed.apply();
+            activity.finish();
+            startActivity(i);
         });
         return view;
     }

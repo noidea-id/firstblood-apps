@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -24,9 +25,7 @@ import id.noidea.firstblood.R;
 public class IntroActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
-    private MyViewPagerAdapter myViewPagerAdapter;
     private LinearLayout dotsLayout;
-    private TextView[] dots;
     private int[] layouts;
     private Button btnSkip, btnNext;
     private PrefManager prefManager;
@@ -49,10 +48,10 @@ public class IntroActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_intro);
 
-        viewPager = (ViewPager) findViewById(R.id.view_pager);
-        dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
-        btnSkip = (Button) findViewById(R.id.btn_skip);
-        btnNext = (Button) findViewById(R.id.btn_next);
+        viewPager = findViewById(R.id.view_pager);
+        dotsLayout = findViewById(R.id.layoutDots);
+        btnSkip = findViewById(R.id.btn_skip);
+        btnNext = findViewById(R.id.btn_next);
 
 
         // layouts of all welcome sliders
@@ -69,35 +68,27 @@ public class IntroActivity extends AppCompatActivity {
         // making notification bar transparent
         changeStatusBarColor();
 
-        myViewPagerAdapter = new MyViewPagerAdapter();
+        MyViewPagerAdapter myViewPagerAdapter = new MyViewPagerAdapter();
         viewPager.setAdapter(myViewPagerAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
 
-        btnSkip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                launchHomeScreen();
-            }
-        });
+        btnSkip.setOnClickListener(v -> launchHomeScreen());
 
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // checking for last page
-                // if last page home screen will be launched
-                int current = getItem(+1);
-                if (current < layouts.length) {
-                    // move to next screen
-                    viewPager.setCurrentItem(current);
-                } else {
-                    launchHomeScreen();
-                }
+        btnNext.setOnClickListener(v -> {
+            // checking for last page
+            // if last page home screen will be launched
+            int current = getItem(+1);
+            if (current < layouts.length) {
+                // move to next screen
+                viewPager.setCurrentItem(current);
+            } else {
+                launchHomeScreen();
             }
         });
     }
 
     private void addBottomDots(int currentPage) {
-        dots = new TextView[layouts.length];
+        TextView[] dots = new TextView[layouts.length];
 
         int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
         int[] colorsInactive = getResources().getIntArray(R.array.array_dot_inactive);
@@ -176,12 +167,14 @@ public class IntroActivity extends AppCompatActivity {
         }
 
         @Override
-        public Object instantiateItem(ViewGroup container, int position) {
+        public Object instantiateItem(@NonNull ViewGroup container, int position) {
             layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            View view = layoutInflater.inflate(layouts[position], container, false);
+            View view = null;
+            if (layoutInflater != null) {
+                view = layoutInflater.inflate(layouts[position], container, false);
+            }
             container.addView(view);
-
             return view;
         }
 
@@ -191,13 +184,13 @@ public class IntroActivity extends AppCompatActivity {
         }
 
         @Override
-        public boolean isViewFromObject(View view, Object obj) {
+        public boolean isViewFromObject(@NonNull View view, @NonNull Object obj) {
             return view == obj;
         }
 
 
         @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
+        public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
             View view = (View) object;
             container.removeView(view);
         }

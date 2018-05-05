@@ -89,20 +89,14 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
         mDemoSlider.setIndicatorVisibility(PagerIndicator.IndicatorVisibility.Invisible);
         mDemoSlider.addOnPageChangeListener(this);
         final BottomNavigationViewEx navigation = activity.findViewById(R.id.navigation);
-        donate_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //emulate click instead call unlimeted activity that minght troubling our glorius garbage collector
-                View v = navigation.findViewById(R.id.navigation_timeline);
-                v.performClick();
-            }
+        donate_button.setOnClickListener(view1 -> {
+            //emulate click instead call unlimeted activity that minght troubling our glorius garbage collector
+            View v = navigation.findViewById(R.id.navigation_timeline);
+            v.performClick();
         });
-        request_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(),FindActivity.class);
-                startActivity(intent);
-            }
+        request_button.setOnClickListener(view12 -> {
+            Intent intent = new Intent(getContext(),FindActivity.class);
+            startActivity(intent);
         });
         return view;
     }

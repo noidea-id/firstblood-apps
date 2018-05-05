@@ -2,11 +2,10 @@ package id.noidea.firstblood.activity;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -19,7 +18,6 @@ import id.noidea.firstblood.R;
 import id.noidea.firstblood.api.ApiClient;
 import id.noidea.firstblood.api.ApiData;
 import id.noidea.firstblood.api.ApiInterface;
-import id.noidea.firstblood.model.Users;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -27,9 +25,6 @@ import retrofit2.Response;
 public class SignupActivity extends AppCompatActivity {
 
     private static final String TAG = SignupActivity.class.getSimpleName();
-
-    private String[] arraySpinnerBlood;
-    private String[] arraySpinnerRhesus;
 
     private EditText et_user, et_email, et_pass, et_pass_conf, et_nama;
     private Spinner sp_goldar, sp_rhesus;
@@ -47,19 +42,19 @@ public class SignupActivity extends AppCompatActivity {
         et_pass_conf = findViewById(R.id.et_pass_conf);
         et_nama = findViewById(R.id.et_nama);
         et_no_hp = findViewById(R.id.et_no_hp);
-        this.arraySpinnerBlood = new String[] {
+        String[] arraySpinnerBlood = new String[]{
                 "A", "B", "O", "AB"
         };
-        sp_goldar = (Spinner) findViewById(R.id.sp_goldar);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+        sp_goldar = findViewById(R.id.sp_goldar);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, arraySpinnerBlood);
         sp_goldar.setAdapter(adapter);
 
-        this.arraySpinnerRhesus= new String[] {
+        String[] arraySpinnerRhesus = new String[]{
                 "+", "-"
         };
-        sp_rhesus = (Spinner) findViewById(R.id.sp_rhesus);
-        ArrayAdapter<String> adapterR = new ArrayAdapter<String>(this,
+        sp_rhesus = findViewById(R.id.sp_rhesus);
+        ArrayAdapter<String> adapterR = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, arraySpinnerRhesus);
         sp_rhesus.setAdapter(adapterR);
     }

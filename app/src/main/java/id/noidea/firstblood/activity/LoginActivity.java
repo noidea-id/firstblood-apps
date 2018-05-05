@@ -30,7 +30,6 @@ public class LoginActivity extends Activity {
 
     private EditText et_user, et_pass;
     private ApiData<Users> account;
-    private String user, pass;
 
     private SharedPreferences sp;
     private SharedPreferences.Editor ed;
@@ -62,8 +61,8 @@ public class LoginActivity extends Activity {
     }
 
     public void login(View v){
-        user = et_user.getText().toString().trim();
-        pass = et_pass.getText().toString().trim();
+        String user = et_user.getText().toString().trim();
+        String pass = et_pass.getText().toString().trim();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View view = getLayoutInflater().inflate(R.layout.progressbar, null);

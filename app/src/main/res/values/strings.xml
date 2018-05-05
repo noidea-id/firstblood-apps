@@ -18,6 +18,12 @@
     <string name="reg_btn">Daftar Akun</string>
 
 
+    <!--Detail Activity-->
+    <string name="aksi_edit">Edit Post</string>
+    <string name="aksi_detail_user">Detail User</string>
+    <string name="aksi_donor">Donor !</string>
+    <string name="aksi_tutup">Tutup Donor</string>
+
     <string name="title_activity_welcome">Home Screen</string>
     <string name="next">LANJUT</string>
     <string name="skip">LEWATI</string>

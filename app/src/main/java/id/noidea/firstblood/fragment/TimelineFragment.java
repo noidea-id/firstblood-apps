@@ -1,6 +1,7 @@
 package id.noidea.firstblood.fragment;
 
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -25,6 +26,7 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -47,14 +49,18 @@ import static android.content.Context.MODE_PRIVATE;
 public class TimelineFragment extends Fragment {
 
     private static final String TAG = TimelineFragment.class.getSimpleName();
-    private RecyclerView rc_timeline;
-    List<Posting> postings_list = new ArrayList<>();
+    private List<Posting> postings_list = new ArrayList<>();
     private Activity activity;
-    TimelineAdapter adapter;
+    private TimelineAdapter adapter;
     private boolean shouldStopLoop = false;
     private ApiData<List<Posting>> listPost;
     private SharedPreferences sp;
     private DbPosting dbP;
+    //Map <key, value>
+    //the map contain <id_posting, index_of_list>
+    //map used to prevent iterate trough list
+    @SuppressLint("UseSparseArrays")
+    private HashMap<Integer, Integer> posting_map = new HashMap<>();
 
 
     public TimelineFragment() {
@@ -81,7 +87,8 @@ public class TimelineFragment extends Fragment {
         dbP = new DbPosting(activity);
         dbP.open();
         postings_list.addAll(dbP.getAllPosting());
-        rc_timeline = view.findViewById(R.id.rc_timeline);
+
+        RecyclerView rc_timeline = view.findViewById(R.id.rc_timeline);
         adapter = new TimelineAdapter(activity, postings_list);
         LinearLayoutManager layoutManager = new LinearLayoutManager(activity);
         layoutManager.setReverseLayout(true);
@@ -174,13 +181,27 @@ public class TimelineFragment extends Fragment {
                         if(!shouldStopLoop){
                             setCurrentSync();
                             for (Posting pst : listPost.getData()) {
-                                dbP.insertPosting(pst);
+                                Integer check = posting_map.get(pst.getId_post());
+                                if (check==null){//if value is not exist
+                                    //add to list
+                                    dbP.insertPosting(pst);
+                                    postings_list.add(pst);
+                                    //map the value
+                                    posting_map.put(pst.getId_post(), postings_list.size()-1);
+                                    adapter.notifyDataSetChanged();
+                                }else{
+                                    //update db
+                                    dbP.updatePosting(pst);
+                                    //get index
+                                    //update list
+                                    postings_list.set(check, pst);
+                                    adapter.notifyItemChanged(check);
+                                }
                             }
-                            postings_list.addAll(listPost.getData());
-                            adapter.notifyDataSetChanged();
-                            rc_timeline.getLayoutManager().scrollToPosition(postings_list.size() - 1);
+                            //TODO auto scroll only when user is at the top of timeline
+                            //rc_timeline.getLayoutManager().scrollToPosition(postings_list.size() - 1);
+                            //TODO remove toast when timeline is done
                             Toast.makeText(activity, "Synced", Toast.LENGTH_SHORT).show();
-
                         }
                     }else{
                         Toast.makeText(activity, "connection error", Toast.LENGTH_LONG).show();

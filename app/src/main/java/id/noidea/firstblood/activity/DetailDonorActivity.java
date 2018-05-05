@@ -1,8 +1,11 @@
 package id.noidea.firstblood.activity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.EditText;
+import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,34 +15,35 @@ import id.noidea.firstblood.model.Posting;
 
 public class DetailDonorActivity extends AppCompatActivity {
 
-    /*
-
-   private int id_post;
-    private String  username, nama, foto_profil, goldar, rhesus, descrip, rumah_sakit, status, inserted_at, updated_at;
-     */
-    private DbPosting dbP;
-    ImageView im_foto_profil;
-    private TextView tv_username, tv_nama,
-            tv_goldar_rhesus, tv_descrip, tv_rumah_sakit,
-            tv_status, tv_inserted_at, tv_updated_at;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_donor);
-        dbP = new DbPosting(this);
+
+        DbPosting dbP = new DbPosting(this);
+        ImageView im_foto_profil = findViewById(R.id.im_foto_profil);
+        TextView tv_username, tv_nama,
+                tv_goldar_rhesus, tv_descrip, tv_rumah_sakit,
+                tv_status, tv_inserted_at, tv_updated_at;
+        Button bt_aksi1, bt_aksi2;
+
+
         dbP.open();
         tv_username = findViewById(R.id.tv_username);
         tv_nama = findViewById(R.id.tv_nama);
-        im_foto_profil = findViewById(R.id.im_foto_profil);
         tv_goldar_rhesus = findViewById(R.id.tv_goldar_rhesus);
         tv_descrip = findViewById(R.id.tv_descrip);
         tv_rumah_sakit = findViewById(R.id.tv_rumah_sakit);
         tv_status = findViewById(R.id.tv_status);
         tv_inserted_at = findViewById(R.id.tv_inserted_at);
         tv_updated_at = findViewById(R.id.tv_updated_at);
+
+        bt_aksi1 = findViewById(R.id.bt_aksi1);
+        bt_aksi2 = findViewById(R.id.bt_aksi2);
+
         int id = getIntent().getIntExtra("id,noidea.firstblood.posting", -1);
         if (id!=-1){
-            Posting p = dbP.getPosting(id);
+            final Posting p = dbP.getPosting(id);
             tv_username.setText(p.getUsername());
             tv_nama.setText(p.getNama());
             tv_goldar_rhesus.setText(p.getGoldar()+p.getRhesus());
@@ -52,6 +56,39 @@ public class DetailDonorActivity extends AppCompatActivity {
             }
             tv_inserted_at.setText(p.getInserted_at());
             tv_updated_at.setText(p.getUpdated_at());
+
+            SharedPreferences sp = getSharedPreferences("id.noidea.firstblood.user", MODE_PRIVATE);
+            String username = sp.getString("username", "");
+            if (username.equals(p.getUsername())){
+                bt_aksi1.setText(getString(R.string.aksi_edit));
+                bt_aksi1.setOnClickListener(v -> {
+                    Intent i = new Intent(getBaseContext(), FindActivity.class);
+                    i.putExtra("id.noidea.firstblood.edit.act", "EditPost");
+                    i.putExtra("id.noidea.firstblood.edit.id", p.getId_post());
+                    startActivity(i);
+                });
+
+                bt_aksi2.setText(getString(R.string.aksi_tutup));
+            }else{
+                bt_aksi1.setText(getString(R.string.aksi_detail_user));
+                bt_aksi2.setText(getString(R.string.aksi_donor));
+            }
         }
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return false;
     }
 }

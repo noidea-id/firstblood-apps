@@ -26,6 +26,7 @@ public class DbPosting {
 
     public long insertPosting(Posting p) {
         ContentValues newV = new ContentValues();
+        newV.put("id_post", p.getId_post());
         newV.put("username", p.getUsername());
         newV.put("nama", p.getNama());
         newV.put("foto_profil", p.getFoto_profil());
@@ -38,6 +39,24 @@ public class DbPosting {
         newV.put("updated_at", p.getUpdated_at());
 
         return db.insert("posting", null, newV);
+    }
+
+    public long updatePosting(Posting p) {
+        ContentValues newV = new ContentValues();
+        //no update for this values
+        //newV.put("id_post", p.getId_post());
+        //newV.put("username", p.getUsername());
+        newV.put("nama", p.getNama());
+        newV.put("foto_profil", p.getFoto_profil());
+        newV.put("goldar", p.getGoldar());
+        newV.put("rhesus", p.getRhesus());
+        newV.put("descrip", p.getDescrip());
+        newV.put("rumah_sakit",p.getRumah_sakit());
+        newV.put("status", p.getStatus());
+        newV.put("inserted_at", p.getInserted_at());
+        newV.put("updated_at", p.getUpdated_at());
+
+        return db.update("posting", newV, "id_post="+p.getId_post(),null);
     }
 
     public Posting getPosting(int id_posting) {

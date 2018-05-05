@@ -65,28 +65,14 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
         date = TextUtils.join("-", Arrays.asList(date2[2], date2[1], date2[0]));
         holder.tv_date.setText(date);
 
-        holder.link_donor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        holder.link_donor.setOnClickListener(v -> Toast.makeText(mInflater.getContext(), "donor "+pstng.getNama(), Toast.LENGTH_SHORT).show());
+        holder.link_share.setOnClickListener(v -> Toast.makeText(mInflater.getContext(), "share "+pstng.getNama(), Toast.LENGTH_SHORT).show());
 
-                Toast.makeText(mInflater.getContext(), "donor "+pstng.getNama(), Toast.LENGTH_SHORT).show();
-            }
-        });
-        holder.link_share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(mInflater.getContext(), "share "+pstng.getNama(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        holder.item_layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(mInflater.getContext(), DetailDonorActivity.class);
-                i.putExtra("id,noidea.firstblood.posting", pstng.getId_post());
-                mInflater.getContext().startActivity(i);
-                //Toast.makeText(mInflater.getContext(), "detail "+pstng.getNama(), Toast.LENGTH_SHORT).show();
-            }
+        holder.item_layout.setOnClickListener(v -> {
+            Intent i = new Intent(mInflater.getContext(), DetailDonorActivity.class);
+            i.putExtra("id,noidea.firstblood.posting", pstng.getId_post());
+            mInflater.getContext().startActivity(i);
+            //Toast.makeText(mInflater.getContext(), "detail "+pstng.getNama(), Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -98,7 +84,6 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder{
-        public int kode_mk;
         public RelativeLayout link_donor, link_share;
         public ImageView im_profile;
         public TextView tv_desc, tv_goldar, tv_status, tv_date;
