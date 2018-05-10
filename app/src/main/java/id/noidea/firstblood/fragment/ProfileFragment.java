@@ -12,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,6 +21,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 import id.noidea.firstblood.activity.LoginActivity;
 import id.noidea.firstblood.R;
 import id.noidea.firstblood.db.DbUsers;
@@ -34,6 +38,7 @@ public class ProfileFragment extends Fragment {
         // Required empty public constructor
     }
     private TextView tv_nama, tv_email, tv_goldar, tv_rhesus, tv_no_hp;
+    private CircleImageView foto_profil;
     private SharedPreferences sp;
     private SharedPreferences.Editor ed;
     private Activity activity;
@@ -59,6 +64,7 @@ public class ProfileFragment extends Fragment {
         tv_goldar = view.findViewById(R.id.tv_goldar);
         tv_rhesus = view.findViewById(R.id.tv_rhesus);
         tv_no_hp = view.findViewById(R.id.tv_no_hp);
+        foto_profil = view.findViewById(R.id.profile_image);
 
         loadProfile();
 
@@ -110,5 +116,7 @@ public class ProfileFragment extends Fragment {
         tv_goldar.setText(us.getGoldar());
         tv_rhesus.setText(us.getRhesus());
         tv_no_hp.setText(us.getNo_hp());
+        Glide.with(activity).asBitmap().load(us.getFoto_profil()).into(foto_profil);
+        Log.d("Profil", "loadProfile: "+us.getFoto_profil());
     }
 }
