@@ -14,6 +14,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -25,10 +28,12 @@ import id.noidea.firstblood.model.Posting;
 public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHolder>{
     private List<Posting> mData;
     private LayoutInflater mInflater;
+    private Context context;
     private int position;
 
     public TimelineAdapter(Context context, List<Posting> data) {
         this.mInflater = LayoutInflater.from(context);
+        this.context = context;
         this.mData = data;
     }
 
@@ -51,7 +56,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
          */
         //TODO apply image link to recycleview
         String url_foto_profil = pstng.getFoto_profil();
-        holder.im_profile.setImageDrawable(mInflater.getContext().getResources().getDrawable(R.drawable.user));
+//        holder.im_profile.setImageDrawable(mInflater.getContext().getResources().getDrawable(R.drawable.user));
         holder.tv_desc.setText(pstng.getDescrip());
         holder.tv_goldar.setText(pstng.getGoldar()+pstng.getRhesus());
         if(pstng.getStatus().equals("0")){
@@ -74,6 +79,8 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
             mInflater.getContext().startActivity(i);
             //Toast.makeText(mInflater.getContext(), "detail "+pstng.getNama(), Toast.LENGTH_SHORT).show();
         });
+
+        Glide.with(context).asBitmap().apply(RequestOptions.circleCropTransform()).load(url_foto_profil).into(holder.im_profile);
     }
 
     // total number of rows
