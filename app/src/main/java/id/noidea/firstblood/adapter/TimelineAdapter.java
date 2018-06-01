@@ -17,7 +17,6 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -28,12 +27,10 @@ import id.noidea.firstblood.model.Posting;
 public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHolder>{
     private List<Posting> mData;
     private LayoutInflater mInflater;
-    private Context context;
-    private int position;
+    //private int position;
 
     public TimelineAdapter(Context context, List<Posting> data) {
         this.mInflater = LayoutInflater.from(context);
-        this.context = context;
         this.mData = data;
     }
 
@@ -49,16 +46,11 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull final TimelineAdapter.ViewHolder holder, final int position) {
         final Posting pstng = mData.get(position);
-        /*
-        public RelativeLayout link_donor, link_share, item_layout;
-        public ImageView im_profile;
-        public TextView tv_desc, tv_goldar, tv_status, tv_date, tv_donor;
-         */
-        //TODO apply image link to recycleview
+
         String url_foto_profil = pstng.getFoto_profil();
 //        holder.im_profile.setImageDrawable(mInflater.getContext().getResources().getDrawable(R.drawable.user));
         holder.tv_desc.setText(pstng.getDescrip());
-        holder.tv_goldar.setText(pstng.getGoldar()+pstng.getRhesus());
+        holder.tv_goldar.setText(String.format("%s%s", pstng.getGoldar(), pstng.getRhesus()));
         if(pstng.getStatus().equals("0")){
             holder.tv_status.setText(mInflater.getContext().getString(R.string.status_0));
         }else if (pstng.getStatus().equals("1")){
@@ -80,7 +72,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
             //Toast.makeText(mInflater.getContext(), "detail "+pstng.getNama(), Toast.LENGTH_SHORT).show();
         });
 
-        Glide.with(context).asBitmap().apply(RequestOptions.circleCropTransform()).load(url_foto_profil).into(holder.im_profile);
+        Glide.with(mInflater.getContext()).asBitmap().apply(RequestOptions.circleCropTransform()).load(url_foto_profil).into(holder.im_profile);
     }
 
     // total number of rows
@@ -97,7 +89,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
         public LinearLayout item_layout;
         //public ConstraintLayout matkul;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             item_layout = itemView.findViewById(R.id.item_layout);
             link_donor = itemView.findViewById(R.id.link_donor);
@@ -112,6 +104,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
     }
 
     // convenience method for getting data at click position
+    /*
     public Posting getItem(int id) {
         return mData.get(id);
     }
@@ -130,5 +123,6 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
         this.mData = filterdNames;
         notifyDataSetChanged();
     }
+    */
 }
 

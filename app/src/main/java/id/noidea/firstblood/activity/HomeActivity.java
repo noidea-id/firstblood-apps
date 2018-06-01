@@ -1,22 +1,19 @@
 package id.noidea.firstblood.activity;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 import android.widget.Button;
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
+import id.noidea.firstblood.R;
 import id.noidea.firstblood.fragment.HomeFragment;
 import id.noidea.firstblood.fragment.ProfileFragment;
 import id.noidea.firstblood.fragment.TimelineFragment;
-import id.noidea.firstblood.R;
 
 public class HomeActivity extends AppCompatActivity {
     Button donate_button;
-    private static final String TAG = HomeActivity.class.getSimpleName();
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = item -> {
                 switch (item.getItemId()) {

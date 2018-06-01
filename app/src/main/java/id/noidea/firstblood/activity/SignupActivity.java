@@ -1,5 +1,6 @@
 package id.noidea.firstblood.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -70,6 +71,7 @@ public class SignupActivity extends AppCompatActivity {
         no_hp = et_no_hp.getText().toString().trim();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        @SuppressLint("InflateParams")
         View view = getLayoutInflater().inflate(R.layout.progressbar, null);
         builder.setView(view);
         builder.setCancelable(false);
@@ -131,7 +133,6 @@ public class SignupActivity extends AppCompatActivity {
                     else{
                         Toast.makeText(c, "connection Error", Toast.LENGTH_LONG).show();
                         //dialog.dismiss();
-                        return;
                     }
                 }
             }

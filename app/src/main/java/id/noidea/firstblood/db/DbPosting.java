@@ -114,6 +114,31 @@ public class DbPosting {
         return out;
     }
 
+    public ArrayList<Posting> getAllPostingByGoldar(String goldar, String rhesus) {
+        Cursor cur = null;
+        ArrayList<Posting> out = new ArrayList<>();
+        cur = db.rawQuery("SELECT * FROM POSTING WHERE goldar=\""+goldar+"\" AND rhesus=\""+rhesus+"\"", null);
+        if (cur.moveToFirst()) {
+            do {
+                Posting p = new Posting();
+                p.setId_post(cur.getInt(0));
+                p.setUsername(cur.getString(1));
+                p.setNama(cur.getString(2));
+                p.setFoto_profil(cur.getString(3));
+                p.setGoldar(cur.getString(4));
+                p.setRhesus(cur.getString(5));
+                p.setDescrip(cur.getString(6));
+                p.setRumah_sakit(cur.getString(7));
+                p.setStatus(cur.getString(8));
+                p.setInserted_at(cur.getString(9));
+                p.setUpdated_at(cur.getString(10));
+                out.add(p);
+            } while (cur.moveToNext());
+        }
+        cur.close();
+        return out;
+    }
+
     public void deleteAll() {
         db.delete("posting", null, null);
     }

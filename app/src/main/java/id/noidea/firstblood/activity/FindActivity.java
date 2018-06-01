@@ -1,5 +1,6 @@
 package id.noidea.firstblood.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -34,7 +35,6 @@ import retrofit2.Response;
 
 public class FindActivity extends AppCompatActivity {
 
-    private Button find;
     private Spinner s_goldar, s_rhesus;
     private EditText et_desc, et_rumah_sakit;
     private static final String TAG = FindActivity.class.getSimpleName();
@@ -51,7 +51,7 @@ public class FindActivity extends AppCompatActivity {
         dbP.open();
         et_desc = findViewById(R.id.et_desc);
         et_rumah_sakit = findViewById(R.id.et_rumah_sakit);
-        find = findViewById(R.id.find);
+        Button find = findViewById(R.id.find);
         String[] arraySpinnerBlood = new String[]{
                 "A", "B", "O", "AB"
         };
@@ -110,6 +110,7 @@ public class FindActivity extends AppCompatActivity {
             return;
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        @SuppressLint("InflateParams")
         View view = getLayoutInflater().inflate(R.layout.progressbar, null);
         builder.setView(view);
         builder.setCancelable(false);
@@ -175,6 +176,7 @@ public class FindActivity extends AppCompatActivity {
             return;
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        @SuppressLint("InflateParams")
         View view = getLayoutInflater().inflate(R.layout.progressbar, null);
         builder.setView(view);
         builder.setCancelable(false);

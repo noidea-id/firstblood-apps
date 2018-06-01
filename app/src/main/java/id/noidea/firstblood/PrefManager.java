@@ -8,27 +8,22 @@ import android.content.SharedPreferences;
  */
 
 public class PrefManager {
-    SharedPreferences pref;
-    SharedPreferences.Editor editor;
-    Context _context;
-
-    // shared pref mode
-    int PRIVATE_MODE = 0;
+    private SharedPreferences pref;
 
     // Shared preferences file name
-    private static final String PREF_NAME = "androidhive-welcome";
+    private static final String PREF_NAME = "id.noidea.firstblood.launcher";
 
     private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
 
     public PrefManager(Context context) {
-        this._context = context;
-        pref = _context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
-        editor = pref.edit();
+        int PRIVATE_MODE = 0;
+        pref = context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
     }
 
     public void setFirstTimeLaunch(boolean isFirstTime) {
+        SharedPreferences.Editor editor = pref.edit();
         editor.putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime);
-        editor.commit();
+        editor.apply();
     }
 
     public boolean isFirstTimeLaunch() {

@@ -1,5 +1,6 @@
 package id.noidea.firstblood.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -65,6 +66,7 @@ public class LoginActivity extends Activity {
         String pass = et_pass.getText().toString().trim();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        @SuppressLint("InflateParams")
         View view = getLayoutInflater().inflate(R.layout.progressbar, null);
         builder.setView(view);
         builder.setCancelable(false);
@@ -99,14 +101,13 @@ public class LoginActivity extends Activity {
                         ed.putString("last_sync", "0000-00-00 00.00.00");
                         ed.apply();
                         dbU.deleteAll();
-                        long check = dbU.insertUser(account.getData());
+                        dbU.insertUser(account.getData());
                         Toast.makeText(c, "Berhasil Masuk", Toast.LENGTH_LONG).show();
                         finish();
                         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                     }
                     else{
                         Toast.makeText(c, "Username atau email dan password salah", Toast.LENGTH_LONG).show();
-                        return;
                     }
                 }
             }

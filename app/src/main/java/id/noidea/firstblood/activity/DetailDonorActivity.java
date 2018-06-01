@@ -2,11 +2,10 @@ package id.noidea.firstblood.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import id.noidea.firstblood.R;
@@ -21,7 +20,6 @@ public class DetailDonorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_donor);
 
         DbPosting dbP = new DbPosting(this);
-        ImageView im_foto_profil = findViewById(R.id.im_foto_profil);
         TextView tv_username, tv_nama,
                 tv_goldar_rhesus, tv_descrip, tv_rumah_sakit,
                 tv_status, tv_inserted_at, tv_updated_at;
@@ -46,7 +44,7 @@ public class DetailDonorActivity extends AppCompatActivity {
             final Posting p = dbP.getPosting(id);
             tv_username.setText(p.getUsername());
             tv_nama.setText(p.getNama());
-            tv_goldar_rhesus.setText(p.getGoldar()+p.getRhesus());
+            tv_goldar_rhesus.setText(String.format("%s%s", p.getGoldar(), p.getRhesus()));
             tv_descrip.setText(p.getDescrip());
             tv_rumah_sakit.setText(p.getRumah_sakit());
             if (p.getStatus().equals("0")){

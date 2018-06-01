@@ -94,6 +94,11 @@
     <string name="bcd9">O+</string>
     <string name="zero">0</string>
     <string name="dummy_date">22 November 2017</string>
+    <string name="setting">Settings</string>
+    <string name="frag_linimasa">LINIMASA</string>
+    <string name="frag_beranda">BERANDA</string>
+    <string name="frag_profil">PROFIL</string>
+    <string name="more">More</string>
 
 
 </resources>

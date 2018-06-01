@@ -19,6 +19,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 import id.noidea.firstblood.PrefManager;
 import id.noidea.firstblood.R;
 
@@ -163,17 +165,15 @@ public class IntroActivity extends AppCompatActivity {
     public class MyViewPagerAdapter extends PagerAdapter {
         private LayoutInflater layoutInflater;
 
-        public MyViewPagerAdapter() {
+        MyViewPagerAdapter() {
         }
 
+        @NonNull
         @Override
         public Object instantiateItem(@NonNull ViewGroup container, int position) {
             layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            View view = null;
-            if (layoutInflater != null) {
-                view = layoutInflater.inflate(layouts[position], container, false);
-            }
+            View view = Objects.requireNonNull(layoutInflater).inflate(layouts[position], container, false);
             container.addView(view);
             return view;
         }

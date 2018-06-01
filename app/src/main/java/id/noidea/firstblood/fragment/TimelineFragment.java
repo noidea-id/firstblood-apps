@@ -36,6 +36,7 @@ import id.noidea.firstblood.api.ApiClient;
 import id.noidea.firstblood.api.ApiData;
 import id.noidea.firstblood.api.ApiInterface;
 import id.noidea.firstblood.db.DbPosting;
+import id.noidea.firstblood.db.DbUsers;
 import id.noidea.firstblood.model.Posting;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -86,6 +87,7 @@ public class TimelineFragment extends Fragment {
         }
         dbP = new DbPosting(activity);
         dbP.open();
+
         postings_list.addAll(dbP.getAllPosting());
 
         RecyclerView rc_timeline = view.findViewById(R.id.rc_timeline);
