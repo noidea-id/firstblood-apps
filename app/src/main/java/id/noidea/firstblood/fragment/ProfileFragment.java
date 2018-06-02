@@ -16,16 +16,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import id.noidea.firstblood.activity.LoginActivity;
 import id.noidea.firstblood.R;
+import id.noidea.firstblood.activity.NotifActivity;
+import id.noidea.firstblood.activity.SettingActivity;
 import id.noidea.firstblood.db.DbUsers;
 import id.noidea.firstblood.model.Users;
 
@@ -92,6 +96,21 @@ public class ProfileFragment extends Fragment {
         menu.clear();
         inflater.inflate(R.menu.actionbar_profile, menu);
         super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.navigation_more:
+                Intent intent = new Intent(getContext(), SettingActivity.class);
+                startActivity(intent);
+//                Toast.makeText(activity,"Setting", Toast.LENGTH_SHORT).show();
+
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override

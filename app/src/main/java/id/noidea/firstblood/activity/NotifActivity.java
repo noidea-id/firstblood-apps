@@ -19,37 +19,31 @@ import id.noidea.firstblood.model.Posting;
 import id.noidea.firstblood.model.Users;
 
 public class NotifActivity extends AppCompatActivity {
-    private RecyclerView rc_notif;
-    private TimelineAdapter adapter;
     private List<Posting> postings_list = new ArrayList<>();
-    private static final String TAG = NotifActivity.class.getSimpleName();
-    private DbPosting dbP;
-    private SharedPreferences sp;
-    private DbUsers dbU;
-
+    //private static final String TAG = NotifActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notif);
-        dbP = new DbPosting(this);
+        DbPosting dbP = new DbPosting(this);
         dbP.open();
-        sp = getSharedPreferences("id.noidea.firstblood.user", MODE_PRIVATE);
+        SharedPreferences sp = getSharedPreferences("id.noidea.firstblood.user", MODE_PRIVATE);
 
-        dbU = new DbUsers(this);
+        DbUsers dbU = new DbUsers(this);
         dbU.open();
         String username = sp.getString("username", null);
         Users u = dbU.getUser(username);
         postings_list.addAll(dbP.getAllPostingByGoldar(u.getGoldar(), u.getRhesus()));
 
 
-        RecyclerView rc_timeline = findViewById(R.id.rc_notif);
-        adapter = new TimelineAdapter(this, postings_list);
+        RecyclerView rc_notif = findViewById(R.id.rc_notif);
+        TimelineAdapter adapter = new TimelineAdapter(this, postings_list);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setReverseLayout(true);
         layoutManager.setStackFromEnd(true);
-        rc_timeline.setLayoutManager(layoutManager);
-        rc_timeline.setAdapter(adapter);
+        rc_notif.setLayoutManager(layoutManager);
+        rc_notif.setAdapter(adapter);
 
     }
     @Override

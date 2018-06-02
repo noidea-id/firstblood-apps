@@ -54,11 +54,17 @@
         <activity
             android:name=".activity.DetailDonorActivity"
             android:label="Detail Posting"
-            android:parentActivityName=".activity.HomeActivity" >
+            android:parentActivityName=".activity.HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="id.noidea.firstblood.activity.HomeActivity" />
         </activity>
+        <activity
+            android:name=".activity.SettingActivity"
+            android:theme="@style/AppTheme.PreferenceScreen">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="id.noidea.firstblood.activity.HomeActivity" />
+        </activity>
     </application>
-
 </manifest>

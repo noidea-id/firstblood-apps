@@ -80,18 +80,11 @@
 
     <string name="appbar_profil">Profil</string>
     <string name="appbar_linimasa">Linimasa</string>
+    <string name="appbar_setting">Pengaturan</string>
 
     <string name="bt_kirim_permintaan">KIRIM PERMINTAAN</string>
     <string name="desc_profile_picture">Profile Picture</string>
 
-    <string name="bcd2">A+</string>
-    <string name="bcd1">Dibutuhkan segera, golongan darah A+ saat ini juga untuk Sdr. Fathi Abdat, yang sakit kompilasi (jantung, paru-paru, ginjal, diabetes).</string>
-    <string name="bcd3">Status</string>
-    <string name="bcd4">22/11/2017</string>
-    <string name="bcd6">malam saya ibu dari muhammad mutsaqofucl fikri penderita anemia aplastik membutuhkan darah golongan darah B yg sedang di rawat di rsup fatmawati jakarta , mohon bantuannya untuk segenap handaitaulan</string>
-    <string name="bcd7">B-</string>
-    <string name="bcd5">Permisi. Mohon bantuannya untuk yang bersedia mendonorkan darah O+.paman dari keluarga saya sedang kritis dan membutuhkan darah O+ malam ini untuk teman-teman dan om,tante, semua yg bersdia untuk mendonorkan darah nya bisa untuk menghubungi saya</string>
-    <string name="bcd9">O+</string>
     <string name="zero">0</string>
     <string name="dummy_date">22 November 2017</string>
     <string name="setting">Settings</string>
@@ -99,6 +92,4 @@
     <string name="frag_beranda">BERANDA</string>
     <string name="frag_profil">PROFIL</string>
     <string name="more">More</string>
-
-
 </resources>
