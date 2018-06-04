@@ -2,7 +2,7 @@
     <string name="app_name">FirstBlood</string>
     <!-- Login Activity-->
     <string name="login_tag">Silahkan masuk dengan akun anda</string>
-    <string name="user_h">Username atau Password</string>
+    <string name="user_h">Username</string>
     <string name="pass_h">Password</string>
     <string name="login_h">Masuk</string>
     <string name="not_reg">Belum mendaftar?  </string>

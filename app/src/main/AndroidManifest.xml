@@ -62,9 +62,19 @@
         <activity
             android:name=".activity.SettingActivity"
             android:theme="@style/AppTheme.PreferenceScreen">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="id.noidea.firstblood.activity.HomeActivity" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="id.noidea.firstblood.activity.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".activity.WaitVerifActivity"
+            android:label="Menunggu Verifikasi"
+            android:parentActivityName=".activity.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="id.noidea.firstblood.activity.HomeActivity" />
+
         </activity>
     </application>
+
 </manifest>

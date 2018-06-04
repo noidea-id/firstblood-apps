@@ -27,13 +27,13 @@ public class DetailDonorActivity extends AppCompatActivity {
 
 
         dbP.open();
-        tv_username = findViewById(R.id.tv_username);
+//        tv_username = findViewById(R.id.tv_username);
         tv_nama = findViewById(R.id.tv_nama);
         tv_goldar_rhesus = findViewById(R.id.tv_goldar_rhesus);
         tv_descrip = findViewById(R.id.tv_descrip);
         tv_rumah_sakit = findViewById(R.id.tv_rumah_sakit);
         tv_status = findViewById(R.id.tv_status);
-        tv_inserted_at = findViewById(R.id.tv_inserted_at);
+//        tv_inserted_at = findViewById(R.id.tv_inserted_at);
         tv_updated_at = findViewById(R.id.tv_updated_at);
 
         bt_aksi1 = findViewById(R.id.bt_aksi1);
@@ -42,7 +42,7 @@ public class DetailDonorActivity extends AppCompatActivity {
         int id = getIntent().getIntExtra("id,noidea.firstblood.posting", -1);
         if (id!=-1){
             final Posting p = dbP.getPosting(id);
-            tv_username.setText(p.getUsername());
+//            tv_username.setText(p.getUsername());
             tv_nama.setText(p.getNama());
             tv_goldar_rhesus.setText(String.format("%s%s", p.getGoldar(), p.getRhesus()));
             tv_descrip.setText(p.getDescrip());
@@ -52,7 +52,7 @@ public class DetailDonorActivity extends AppCompatActivity {
             }else if(p.getStatus().equals("1")){
                 tv_status.setText(getString(R.string.status_1));
             }
-            tv_inserted_at.setText(p.getInserted_at());
+//            tv_inserted_at.setText(p.getInserted_at());
             tv_updated_at.setText(p.getUpdated_at());
 
             SharedPreferences sp = getSharedPreferences("id.noidea.firstblood.user", MODE_PRIVATE);
