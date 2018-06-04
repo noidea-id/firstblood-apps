@@ -1,6 +1,5 @@
 package id.noidea.firstblood.api.service;
 
-import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.Service;
@@ -14,9 +13,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Timer;
@@ -27,8 +24,10 @@ import id.noidea.firstblood.api.ApiClient;
 import id.noidea.firstblood.api.ApiData;
 import id.noidea.firstblood.api.ApiInterface;
 import id.noidea.firstblood.db.DbPosting;
+import id.noidea.firstblood.db.DbUsers;
 import id.noidea.firstblood.model.Notif;
 import id.noidea.firstblood.model.Posting;
+import id.noidea.firstblood.model.Users;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,15 +39,13 @@ public class ProcessingService extends Service {
     private static final String TAG = ProcessingService.class.getSimpleName();
 
     private Timer timer = new Timer();
-    private List<Notif> notif_list = new ArrayList<>();
     private ApiData<List<Notif>> listNotif;
     private SharedPreferences sp;
-//    DbPosting dbP;
-    private List<Posting> postings_list = new ArrayList<>();
     private ApiData<List<Posting>> listPost;
-    @SuppressLint("UseSparseArrays")
-    private HashMap<Integer, Integer> posting_map = new HashMap<>();
     private DbPosting dbP;
+    private DbUsers dbU;
+    private int notifCount = 0;
+    private Users us;
 
 
 
@@ -62,7 +59,8 @@ public class ProcessingService extends Service {
         super.onCreate();
         sp = getSharedPreferences("id.noidea.firstblood.user", MODE_PRIVATE);
         dbP = new DbPosting(this);
-        dbP.open();
+        dbU = new DbUsers(this);
+
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
@@ -77,6 +75,7 @@ public class ProcessingService extends Service {
     public void onDestroy() {
         super.onDestroy();
         dbP.close();
+        dbU.close();
     }
 
     @Override
@@ -102,8 +101,13 @@ public class ProcessingService extends Service {
                 if (listNotif != null) {
                     if (listNotif.getStatus().equals("success")) {
                         if (listNotif.getData()!=null && listNotif.getData().size()>0){
-                            notif_list.addAll(listNotif.getData());
-                            triggerNotif();
+                            for (Notif nf:listNotif.getData()){
+                                Posting ps = dbP.getPosting(nf.getId_post());
+                                if (ps.getRhesus().equals(us.getRhesus())&& ps.getGoldar().equals(us.getGoldar())&& !ps.getStatus().equals("2")){
+                                    notifCount++;
+                                    triggerNotif();
+                                }
+                            }
                         }
                     }
                 }
@@ -119,6 +123,12 @@ public class ProcessingService extends Service {
 
 
     private void getTimeline(){
+        dbP.open();
+        dbU.open();
+
+        String username = sp.getString("username", "");
+        us = dbU.getUser(username);
+
         listPost = new ApiData<>();
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         String key = sp.getString("api_key", null);
@@ -133,19 +143,16 @@ public class ProcessingService extends Service {
                 if (listPost != null) {
                     if (listPost.getStatus().equals("success")){
                         for (Posting pst : listPost.getData()) {
-                            Integer check = posting_map.get(pst.getId_post());
-                            if (check==null){//if value is not exist
+                            Boolean check = dbP.isInserted(pst.getId_post());
+                            if (!check){//if value is not exist
                                 //add to list
                                 dbP.insertPosting(pst);
-                                postings_list.add(pst);
                                 //map the value
-                                posting_map.put(pst.getId_post(), postings_list.size()-1);
                             }else{
                                 //update db
                                 dbP.updatePosting(pst);
                                 //get index
                                 //update list
-                                postings_list.set(check, pst);
                             }
                         }
                     }
@@ -173,8 +180,8 @@ public class ProcessingService extends Service {
         NotificationManager manager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
         Notification notification = new Notification.Builder(getApplicationContext())
                 .setContentTitle("First Blood")
-                .setContentText("Ada X orang yang membutuhkan darah anda!")
-                .setContentTitle("Username, Tolong")
+                .setContentText("Ada "+notifCount+" orang yang membutuhkan darah anda!")
+                .setContentTitle("Bantuanmu dibutuhkan,"+us.getNama().split(" ")[0]+"!")
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
                 .build();
 

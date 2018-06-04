@@ -139,6 +139,17 @@ public class DbPosting {
         return out;
     }
 
+    public boolean isInserted(int id) {
+        String Query = "SELECT * FROM posting WHERE id_post = \"" + id+"\"";
+        Cursor cursor = db.rawQuery(Query, null);
+        if(cursor.getCount() <= 0){
+            cursor.close();
+            return false;
+        }
+        cursor.close();
+        return true;
+    }
+
     public void deleteAll() {
         db.delete("posting", null, null);
     }

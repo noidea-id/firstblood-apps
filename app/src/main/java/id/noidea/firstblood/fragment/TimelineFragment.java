@@ -4,8 +4,8 @@ package id.noidea.firstblood.fragment;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -26,7 +26,6 @@ import java.util.List;
 
 import id.noidea.firstblood.R;
 import id.noidea.firstblood.adapter.TimelineAdapter;
-import id.noidea.firstblood.api.ApiData;
 import id.noidea.firstblood.db.DbPosting;
 import id.noidea.firstblood.model.Posting;
 
@@ -41,8 +40,9 @@ public class TimelineFragment extends Fragment {
     private List<Posting> postings_list = new ArrayList<>();
     private Activity activity;
     private TimelineAdapter adapter;
-    private SharedPreferences sp;
     private DbPosting dbP;
+    private boolean shouldStopLoop = false;
+    private View view;
     //Map <key, value>
     //the map contain <id_posting, index_of_list>
     //map used to prevent iterate trough list
@@ -72,18 +72,8 @@ public class TimelineFragment extends Fragment {
             mActionBar.setTitle(null);
         }
         dbP = new DbPosting(activity);
-        dbP.open();
-
-        postings_list.addAll(dbP.getAllPosting());
-
-        RecyclerView rc_timeline = view.findViewById(R.id.rc_timeline);
-        adapter = new TimelineAdapter(activity, postings_list);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(activity);
-        layoutManager.setReverseLayout(true);
-        layoutManager.setStackFromEnd(true);
-        rc_timeline.setLayoutManager(layoutManager);
-        rc_timeline.setAdapter(adapter);
-        sp = activity.getSharedPreferences("id.noidea.firstblood.user", MODE_PRIVATE);
+        this.view = view;
+        updateUI();
         return view;
     }
 
@@ -102,17 +92,60 @@ public class TimelineFragment extends Fragment {
         }
     }
 
+    private void syncTimeline(){
+        final Handler mHandler = new Handler();
+
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                //do operation here
+                updateUI();
+                if (!shouldStopLoop) {
+                    mHandler.postDelayed(this, 10000);
+                }else{
+                    mHandler.removeCallbacks(this);
+                    dbP.close();
+                }
+            }
+        };
+        mHandler.post(runnable);
+    }
+
+    //only sync when opening this fragment
+    // need to see fragment lifecycle
+    @Override
+    public void onStart() {
+        super.onStart();
+        syncTimeline();
+        shouldStopLoop = false;
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
+        shouldStopLoop = true;
         dbP.close();
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        shouldStopLoop = true;
     }
 
+    private void updateUI(){
+        postings_list.clear();
+        dbP.open();
+        postings_list.addAll(dbP.getAllPosting());
+
+        RecyclerView rc_timeline = view.findViewById(R.id.rc_timeline);
+        adapter = new TimelineAdapter(activity, postings_list);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(activity);
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
+        rc_timeline.setLayoutManager(layoutManager);
+        rc_timeline.setAdapter(adapter);
+    }
 }
 
 
