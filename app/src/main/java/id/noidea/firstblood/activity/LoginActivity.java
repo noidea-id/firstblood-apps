@@ -48,11 +48,16 @@ public class LoginActivity extends Activity {
 
         String username = sp.getString("username", "");
         String api_key = sp.getString("api_key", "");
+        String role = sp.getString("role","");
         boolean logged = sp.getBoolean("logged", false);
-        if (!api_key.equals("") && !username.equals("") && logged) {
+        if (!api_key.equals("") && !username.equals("") && logged && role.equals("user")) {
             finish();
             //opening profile activity
             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+        }else if(!api_key.equals("") && !username.equals("") && logged && role.equals("rumahsakit")){
+            finish();
+            //opening profile activity
+            startActivity(new Intent(getApplicationContext(), AdminActivity.class));
         }
     }
 
@@ -99,12 +104,16 @@ public class LoginActivity extends Activity {
                         ed.putString("api_key", account.getData().getApi_key());
                         ed.putBoolean("logged", true);
                         ed.putString("last_sync", "0000-00-00 00.00.00");
+                        ed.putString("role", account.getData().getRole());
                         ed.apply();
                         dbU.deleteAll();
                         dbU.insertUser(account.getData());
                         Toast.makeText(c, "Berhasil Masuk", Toast.LENGTH_LONG).show();
                         finish();
-                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                        if (account.getData().getRole().equals("user"))
+                            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                        else
+                            startActivity(new Intent(getApplicationContext(), AdminActivity.class));
                     }
                     else{
                         Toast.makeText(c, "Username atau email dan password salah", Toast.LENGTH_LONG).show();

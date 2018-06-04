@@ -28,6 +28,7 @@
     <string name="next">LANJUT</string>
     <string name="skip">LEWATI</string>
     <string name="start">MENGERTI</string>
+    <string name="exit">KELUAR</string>
 
     <string name="slide_1_title">71%</string>
     <string name="slide_1_desc">Kebutuhan darah di Indonesia tidak terpenuhi</string>
@@ -65,6 +66,8 @@
     <string name="label_e_mail">E-MAIL</string>
     <string name="label_no_handphone">NO HANDPHONE</string>
 
+    <string name="judul_admin">FirstBlood - Admin</string>
+
     <string name="desc_icon_donor">icon donor</string>
     <string name="desc_share_icon">share icon</string>
 
@@ -74,6 +77,7 @@
     <string name="bt_donor_darah">DONOR DARAH</string>
     <string name="bt_cari_donor">CARI DONOR</string>
     <string name="bt_logout">Logout</string>
+    <string name="bt_confirm">Konfirmasi</string>
 
     <string name="status_0">Menunggu</string>
     <string name="status_1">Selesai</string>

@@ -80,6 +80,9 @@
             android:name=".api.service.ServiceBroadcast"
             android:enabled="true"
             android:label="RestartServiceWhenStopped" />
+        <activity
+            android:name=".activity.AdminActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

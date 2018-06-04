@@ -2,12 +2,12 @@ package id.noidea.firstblood.model;
 
 public class Users {
     private String username, email, password, api_key, nama, goldar, rhesus;
-    private String no_hp, foto_profil;
+    private String no_hp, foto_profil, role;
 
     public Users() {
     }
 
-    public Users(String username, String email, String password, String api_key, String nama, String goldar, String rhesus, String no_hp, String foto_profil) {
+    public Users(String username, String email, String password, String api_key, String nama, String goldar, String rhesus, String no_hp, String foto_profil, String role) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -17,6 +17,7 @@ public class Users {
         this.rhesus = rhesus;
         this.no_hp = no_hp;
         this.foto_profil = foto_profil;
+        this.role = role;
     }
 
     public String getUsername() {
@@ -89,5 +90,13 @@ public class Users {
 
     public void setFoto_profil(String foto_profil) {
         this.foto_profil = foto_profil;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
