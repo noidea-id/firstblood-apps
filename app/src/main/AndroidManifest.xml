@@ -75,6 +75,11 @@
                 android:value="id.noidea.firstblood.activity.HomeActivity" />
 
         </activity>
+        <service android:enabled="true" android:name=".api.service.ProcessingService" />
+        <receiver
+            android:name=".api.service.ServiceBroadcast"
+            android:enabled="true"
+            android:label="RestartServiceWhenStopped" />
     </application>
 
 </manifest>

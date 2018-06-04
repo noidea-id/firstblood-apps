@@ -22,7 +22,6 @@ public class DbOpenHelper extends SQLiteOpenHelper {
             "status TEXT NOT NULL, inserted_at TEXT NOT NULL," +
             "updated_at TEXT NOT NULL)";
 
-
     public DbOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }

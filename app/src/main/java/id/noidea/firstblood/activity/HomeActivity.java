@@ -1,5 +1,6 @@
 package id.noidea.firstblood.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import id.noidea.firstblood.R;
+import id.noidea.firstblood.api.service.ProcessingService;
 import id.noidea.firstblood.fragment.HomeFragment;
 import id.noidea.firstblood.fragment.ProfileFragment;
 import id.noidea.firstblood.fragment.TimelineFragment;
@@ -43,6 +45,9 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        startService(new Intent(this, ProcessingService.class));
+
         HomeFragment homeFragment = new HomeFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, homeFragment).addToBackStack(null).commit();
 

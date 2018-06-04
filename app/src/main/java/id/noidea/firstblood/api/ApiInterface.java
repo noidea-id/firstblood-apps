@@ -1,6 +1,7 @@
 package id.noidea.firstblood.api;
 import java.util.List;
 
+import id.noidea.firstblood.model.Notif;
 import id.noidea.firstblood.model.Posting;
 import id.noidea.firstblood.model.Users;
 import retrofit2.Call;
@@ -69,7 +70,8 @@ public interface ApiInterface {
     @DELETE("posting/{id_posting}/")
     Call<ApiData<Integer>> deleteMatkul(@Path("id_posting") String id_posting, @Query("key") String key);
 
-
+    @GET("posting/latest/")
+    Call<ApiData<List<Notif>>> getLatestNotif(@Query("key") String key, @Query("time") String time);
 
 
 //  example code
