@@ -55,6 +55,8 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
             holder.tv_status.setText(mInflater.getContext().getString(R.string.status_0));
         }else if (pstng.getStatus().equals("1")){
             holder.tv_status.setText(mInflater.getContext().getString(R.string.status_1));
+        }else if (pstng.getStatus().equals("2")){
+            holder.tv_status.setText(mInflater.getContext().getString(R.string.status_2));
         }
         //damn mysql date format, have no choice but flip it like a fools
         String date = pstng.getInserted_at().split(" ")[0];

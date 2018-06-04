@@ -79,8 +79,9 @@
     <string name="bt_logout">Logout</string>
     <string name="bt_confirm">Konfirmasi</string>
 
-    <string name="status_0">Menunggu</string>
-    <string name="status_1">Selesai</string>
+    <string name="status_0">Mengajukan</string>
+    <string name="status_1">Menunggu</string>
+    <string name="status_2">Selesai</string>
 
     <string name="appbar_profil">Profil</string>
     <string name="appbar_linimasa">Linimasa</string>

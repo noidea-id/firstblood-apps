@@ -6,7 +6,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import id.noidea.firstblood.R;
 import id.noidea.firstblood.db.DbPosting;
@@ -14,12 +18,15 @@ import id.noidea.firstblood.model.Posting;
 
 public class DetailDonorActivity extends AppCompatActivity {
 
+    private ImageView im_foto_profil;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_donor);
 
         DbPosting dbP = new DbPosting(this);
+        im_foto_profil = findViewById(R.id.im_foto_profil);
         TextView tv_username, tv_nama,
                 tv_goldar_rhesus, tv_descrip, tv_rumah_sakit,
                 tv_status, tv_inserted_at, tv_updated_at;
@@ -54,6 +61,8 @@ public class DetailDonorActivity extends AppCompatActivity {
             }
 //            tv_inserted_at.setText(p.getInserted_at());
             tv_updated_at.setText(p.getUpdated_at());
+
+            Glide.with(getApplicationContext()).asBitmap().apply(RequestOptions.circleCropTransform()).load(p.getFoto_profil()).into(im_foto_profil);
 
             SharedPreferences sp = getSharedPreferences("id.noidea.firstblood.user", MODE_PRIVATE);
             String username = sp.getString("username", "");

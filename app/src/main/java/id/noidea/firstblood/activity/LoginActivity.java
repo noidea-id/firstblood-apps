@@ -15,11 +15,17 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import id.noidea.firstblood.R;
 import id.noidea.firstblood.api.ApiClient;
 import id.noidea.firstblood.api.ApiData;
 import id.noidea.firstblood.api.ApiInterface;
+import id.noidea.firstblood.db.DbPosting;
 import id.noidea.firstblood.db.DbUsers;
+import id.noidea.firstblood.model.Posting;
 import id.noidea.firstblood.model.Users;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,6 +41,12 @@ public class LoginActivity extends Activity {
     private SharedPreferences sp;
     private SharedPreferences.Editor ed;
     private DbUsers dbU;
+
+    private List<Posting> postings_list = new ArrayList<>();
+    private ApiData<List<Posting>> listPost;
+    @SuppressLint("UseSparseArrays")
+    private HashMap<Integer, Integer> posting_map = new HashMap<>();
+    private DbPosting dbP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +111,7 @@ public class LoginActivity extends Activity {
 
                 if (account != null) {
                     if (account.getStatus().equals("success")){
+                        getTimeline();
                         ed = sp.edit();
                         ed.putString("username", account.getData().getUsername());
                         ed.putString("api_key", account.getData().getApi_key());
@@ -135,4 +148,46 @@ public class LoginActivity extends Activity {
         super.onDestroy();
         dbU.close();
     }
+
+    private void getTimeline(){
+        listPost = new ApiData<>();
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+        String key = sp.getString("api_key", null);
+        String date = sp.getString("last_sync", "0000-00-00 00.00.00");
+
+        Call<ApiData<List<Posting>>> call = apiService.getLatestPosting(key,date);
+        call.enqueue(new Callback<ApiData<List<Posting>>>() {
+            @Override
+            public void onResponse(@NonNull Call<ApiData<List<Posting>>> call, @NonNull Response<ApiData<List<Posting>>> response) {
+                listPost = response.body();
+
+                if (listPost != null) {
+                    if (listPost.getStatus().equals("success")){
+                        for (Posting pst : listPost.getData()) {
+                            Integer check = posting_map.get(pst.getId_post());
+                            if (check==null){//if value is not exist
+                                //add to list
+                                dbP.insertPosting(pst);
+                                postings_list.add(pst);
+                                //map the value
+                                posting_map.put(pst.getId_post(), postings_list.size()-1);
+                            }else{
+                                //update db
+                                dbP.updatePosting(pst);
+                                //get index
+                                //update list
+                                postings_list.set(check, pst);
+                            }
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<ApiData<List<Posting>>> call, @NonNull Throwable t) {
+                Log.e(TAG, "onFailure: ", t);
+            }
+        });
+    }
+
 }
