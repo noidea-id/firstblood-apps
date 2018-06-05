@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -45,6 +46,13 @@ public class DetailDonorActivity extends AppCompatActivity {
 
         bt_aksi1 = findViewById(R.id.bt_aksi1);
         bt_aksi2 = findViewById(R.id.bt_aksi2);
+        bt_aksi2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), WaitVerifActivity.class);
+                startActivity(intent);
+            }
+        });
 
         int id = getIntent().getIntExtra("id,noidea.firstblood.posting", -1);
         if (id!=-1){

@@ -32,8 +32,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-//TODO trigger UI whenever UI exist, current implementation just insert to DB
 //TODO Notification click + text editing
+//TODO Notif counter broken
 public class ProcessingService extends Service {
 
     private static final String TAG = ProcessingService.class.getSimpleName();
@@ -65,8 +65,6 @@ public class ProcessingService extends Service {
             @Override
             public void run() {
                 getTimeline();
-                getNotif();
-                setCurrentSync();
             }
         }, 0, 10000);//10 Seconds
     }
@@ -91,6 +89,7 @@ public class ProcessingService extends Service {
 
         String key = sp.getString("api_key", null);
         String date = sp.getString("last_sync", "0000-00-00 00.00.00");
+        setCurrentSync();
 
         Call<ApiData<List<Notif>>> call = apiService.getLatestNotif(key,date);
         call.enqueue(new Callback<ApiData<List<Notif>>>() {
@@ -103,9 +102,12 @@ public class ProcessingService extends Service {
                         if (listNotif.getData()!=null && listNotif.getData().size()>0){
                             for (Notif nf:listNotif.getData()){
                                 Posting ps = dbP.getPosting(nf.getId_post());
-                                if (ps.getRhesus().equals(us.getRhesus())&& ps.getGoldar().equals(us.getGoldar())&& !ps.getStatus().equals("2")){
-                                    notifCount++;
-                                    triggerNotif();
+                                if (ps.getRhesus()!=null && ps.getGoldar()!=null && ps.getStatus()!=null
+                                        && us.getRhesus()!=null && us.getGoldar()!=null) {
+                                    if (ps.getRhesus().equals(us.getRhesus()) && ps.getGoldar().equals(us.getGoldar()) && !ps.getStatus().equals("2")) {
+                                        notifCount++;
+                                        triggerNotif();
+                                    }
                                 }
                             }
                         }
@@ -155,6 +157,7 @@ public class ProcessingService extends Service {
                                 //update list
                             }
                         }
+                        getNotif();
                     }
                 }
             }

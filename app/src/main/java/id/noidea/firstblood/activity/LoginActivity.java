@@ -2,6 +2,7 @@ package id.noidea.firstblood.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -23,6 +24,7 @@ import id.noidea.firstblood.R;
 import id.noidea.firstblood.api.ApiClient;
 import id.noidea.firstblood.api.ApiData;
 import id.noidea.firstblood.api.ApiInterface;
+import id.noidea.firstblood.api.service.ProcessingService;
 import id.noidea.firstblood.db.DbPosting;
 import id.noidea.firstblood.db.DbUsers;
 import id.noidea.firstblood.model.Posting;
@@ -63,10 +65,12 @@ public class LoginActivity extends Activity {
         String role = sp.getString("role","");
         boolean logged = sp.getBoolean("logged", false);
         if (!api_key.equals("") && !username.equals("") && logged && role.equals("user")) {
+            runService();
             finish();
             //opening profile activity
             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
         }else if(!api_key.equals("") && !username.equals("") && logged && role.equals("rumahsakit")){
+            runService();
             finish();
             //opening profile activity
             startActivity(new Intent(getApplicationContext(), AdminActivity.class));
@@ -122,11 +126,14 @@ public class LoginActivity extends Activity {
                         dbU.deleteAll();
                         dbU.insertUser(account.getData());
                         Toast.makeText(c, "Berhasil Masuk", Toast.LENGTH_LONG).show();
-                        finish();
-                        if (account.getData().getRole().equals("user"))
+                        runService();
+                        if (account.getData().getRole().equals("user")) {
                             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                        else
+                        }else {
                             startActivity(new Intent(getApplicationContext(), AdminActivity.class));
+                        }
+                        finish();
+
                     }
                     else{
                         Toast.makeText(c, "Username atau email dan password salah", Toast.LENGTH_LONG).show();
@@ -188,6 +195,23 @@ public class LoginActivity extends Activity {
                 Log.e(TAG, "onFailure: ", t);
             }
         });
+    }
+
+
+    private boolean isMyServiceRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void runService(){
+        if (!isMyServiceRunning(ProcessingService.class)){
+            startService(new Intent(getBaseContext(), ProcessingService.class));
+        }
     }
 
 }

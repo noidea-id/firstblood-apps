@@ -46,7 +46,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        startService(new Intent(this, ProcessingService.class));
 
         HomeFragment homeFragment = new HomeFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, homeFragment).addToBackStack(null).commit();
